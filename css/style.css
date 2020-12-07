@@ -1,3 +1,33 @@
+/* This is something we will ALWAYS do for any production application. 
+This is so that no matter what browser, anything inherent to the browser is overriden */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 10px;
+}
+
 body {
-  background-color: crimson;
+  box-sizing: border-box;
+}
+
+/* Begin app specific code */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0 0 0 0;
+}
+
+body {
+  top: 0;
+  left: 0;
+  background-image: url(../images/Westeros_HBO.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
