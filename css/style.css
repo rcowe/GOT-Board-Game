@@ -17,6 +17,8 @@ body {
 }
 
 /* Begin app specific code */
+
+/* Body */
 html,
 body {
   height: 100%;
@@ -30,4 +32,45 @@ body {
   background-image: url(../images/Westeros_HBO.png);
   background-size: cover;
   background-repeat: no-repeat;
+  /* background-attachment: fixed;
+  background-position: center; */
+  color: black;
 }
+
+/* Modals */
+#modal-story,
+#modal-instructions {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  display: none;
+  z-index: 1; /*This puts our modal in front of the body (which has a default z-index setting of `0`*/
+}
+#modal-textbox1,
+#modal-textbox2 {
+  background-color: rgb(247, 238, 238);
+  height: 350px;
+  width: 550px;
+}
+
+/* Buttons */
+button {
+  margin-bottom: 1em;
+  padding: 1em 3em;
+  border-radius: 0.5em;
+  border: 2px solid black(247, 239, 239, 0.5);
+  color: rgba(5, 4, 4, 0.5);
+}
+
+button:focus {
+  outline: 0;
+  animation: rotate-center 0.6s ease-in-out both;
+}
+/* #openModal-GameInit {
+  align-items: center;
+} */

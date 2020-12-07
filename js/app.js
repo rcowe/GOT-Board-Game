@@ -11,8 +11,42 @@ Step 5. Add css standard items
 
 // ***** game set-up ***** //
 
-// ***** jquery ***** //
+// audio
 
+function playMusic() {
+  const music = document.getElementById('audio');
+  music.play();
+  setTimeout(function () {
+    music.currentTime = 0;
+    music.pause();
+  }, 15000);
+}
+
+// ***** jquery ***** //
 $(() => {
-  /* game code */
+  /* DOM cache */
+
+  const $audio = $('#audio');
+
+  // story modal
+  const $modal = $('#modal-story'); // This is the story modal
+  const $texbox = $('#modal-textbox1'); // This is the textbox in the modal
+  const $openModal = $('#openModal-GameInit'); // This is the button that opens the modal
+  const $closedModal = $('#close1'); // this is the anchor tag that closes the modal
+
+  /* event handlers */
+
+  // story modal
+  const openModal = (event) => {
+    $modal.css('display', 'flex');
+  };
+  const closeModal = (event) => {
+    $modal.css('display', 'none');
+  };
+
+  /* event listeners */
+
+  // story modal
+  $openModal.on('click', openModal);
+  $closedModal.on('click', closeModal);
 });

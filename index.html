@@ -12,6 +12,7 @@
     <script src="js/app.js" class="app"></script>
 </head>
 <body>
+    <button id="openModal-GameInit" onclick="playMusic()">Game Story</button>
     <!--   Game Story Modal: Close, Content and Instruction button-->
     <div id="modal-story">
         <div id="modal-textbox1">
@@ -30,11 +31,17 @@
           <h1>Game Instructions</h1>
             <p>The game is a simple one, you must guide Gendry through Westeros's great houses. He must obtain their support, loyalty <br>... and gold.</p> 
             <p>Use each house's sigil to guide you through the game, always moving to the left. Be wary of King's Landing for the queen must not find out - or she'll have his head!</p><br>
-            <p>While visiting each house, you must make desicions the lords and ladies will find favorable. This will gain you points. When you've reached more than 400 points - you are ready to move against the Queen. Be wary of liars, everyone has their own agenda.</p>
+            <p>While visiting each house, you must make desicions the lords and ladies will find favorable. This will gain you points. When you've reached more than 400 points - you are ready to move against the Queen. Be wary of liars, everyone has their own agenda.</p><br>
+            <p>Leaderboard will contain points obtained from Barathon pledged houses, they have given their support! For the true King.</p>
             <button id="game-play">Start Game</button>
         </div>
       </div>
       
+<audio id="audio" src="media/GOT Intro-Clip-AppVersion.mp3" loop="autoplay"></audio>
 
+<!--   Alternative -->
+<!-- <audio controls>
+    <source src="media/GOT Intro-Clip-AppVersion.mp3" type="audio/mp3">
+</audio> -->
 </body>
 </html>
