@@ -26,8 +26,6 @@ function playMusic() {
 $(() => {
   /* DOM cache */
 
-  const $audio = $('#audio');
-
   // story modal
   const $modal = $('#modal-story'); // This is the story modal
   const $texbox = $('#modal-textbox1'); // This is the textbox in the modal
