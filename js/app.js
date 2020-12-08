@@ -10,9 +10,78 @@ Step 5. Add css standard items -- done
 Step 6. Position house sigils in correct locations
 */
 
+// ***** audio file function ***** //
+function playMusic() {
+  const music = document.getElementById('audio');
+  music.play();
+  setTimeout(function () {
+    music.currentTime = 0;
+    music.pause();
+  }, 15000);
+}
+
 // ***** game set-up ***** //
 
-// Hero Class
+// array of objects to pull into class when generating houses
+const allHouses = [
+  {
+    house: 'Baratheon',
+    soldiers: 500,
+    gold: 10000,
+    goal: 'Peace to Kingdom',
+  },
+
+  {
+    house: 'Martell',
+    soldiers: 250,
+    gold: 20000,
+    goal: 'Place in court',
+  },
+
+  {
+    house: 'Tyrell',
+    soldiers: 150,
+    gold: 5000,
+    goal: 'Strong allegiance',
+  },
+
+  {
+    house: 'Lannister',
+    soldiers: 75,
+    gold: 5000,
+    goal: 'Place in court',
+  },
+
+  {
+    house: 'Tully',
+    soldiers: 400,
+    gold: 3000,
+    goal: 'Strong allegiance',
+  },
+
+  {
+    house: 'Arryn',
+    soldiers: 5000,
+    gold: 10000,
+    goal: 'Place in court',
+  },
+
+  {
+    house: 'GreyJoy',
+    soldiers: 300,
+    gold: 1000,
+    goal: 'Strong allegiance',
+  },
+
+  {
+    house: 'Stark',
+    soldiers: 10000,
+    gold: 4000,
+    goal: 'Place in court',
+  },
+];
+
+// Hero Class, pulls from array of objects
 class Hero {
   constructor(name) {
     this.name = name;
@@ -31,32 +100,24 @@ class Hero {
   }
 }
 
+// Houses Class, pulls from array
 class Houses {
   constructor(name) {
     this.name = name;
-  }
-  houseMotto() {
-    console.log(`house motto from object`);
   }
   soldiers() {
     console.log(`number of sodiers`);
   }
   goldAmount() {
-    console.log();
+    console.log(`amount of gold`);
+  }
+  houseGoal() {
+    console.log(`house goal/desire`);
   }
 }
 
-// ***** audio file function ***** //
-function playMusic() {
-  const music = document.getElementById('audio');
-  music.play();
-  setTimeout(function () {
-    music.currentTime = 0;
-    music.pause();
-  }, 15000);
-}
-
 // ***** jquery ***** //
+
 $(() => {
   //*********************************//
   /* DOM cache */
@@ -82,7 +143,7 @@ $(() => {
 
   // story modal
 
-  // locking in container
+  // adding inside container
   $modal1.appendTo($container);
   $modal2.appendTo($container);
   const openModal1 = (event) => {
