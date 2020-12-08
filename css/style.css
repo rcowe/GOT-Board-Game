@@ -19,22 +19,35 @@ body {
 /* Begin app specific code */
 
 /* Body */
-html,
+/* html,
 body {
   height: 100%;
   width: 100%;
+  min-width: ; /* manipulate the element, and add positioning, transform */
+/* max-width: ;
   margin: 0 0 0 0;
-}
+} */
 
-body {
-  top: 0;
+/* body { */
+/* top: 0;
   left: 0;
   background-image: url(../images/Westeros_HBO.png);
   background-size: cover;
   background-repeat: no-repeat;
-  /* background-attachment: fixed;
+  background-attachment: fixed;
+  background-position: center; 
+  color: black; */
+/* } */
+
+#background-image {
+  /* height: 100%;
+  width: 100%;
+  min-width: ; /* manipulate the element, and add positioning, transform */
+  /*max-width: ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-position: center; */
-  color: black;
 }
 
 /* Modals */
@@ -73,5 +86,3 @@ button:focus {
 }
 
 /* House Divs*/
-.houses {
-}
