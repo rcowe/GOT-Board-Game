@@ -7,12 +7,46 @@ Step 2. Write storyline into html (Modals, Buttons, etc) -- done
 Step 3. Create modal, that shows up upon loading page (figure out how to add images within modal) -- done, went with button to initialize 
 Step 4. In HTML, write DIVs for each house, add sigil image -- done 
 Step 5. Add css standard items -- done 
+Step 6. Position house sigils in correct locations
 */
 
 // ***** game set-up ***** //
 
-// audio
+// Hero Class
+class Hero {
+  constructor(name) {
+    this.name = name;
+  }
+  trade() {
+    console.log(`you traded`);
+  }
+  moving_speech() {
+    console.log(`Gendry moving speech`);
+  }
+  score() {
+    console.log(`current score`);
+  }
+  currentObjects() {
+    console.log(`Gendry has..`);
+  }
+}
 
+class Houses {
+  constructor(name) {
+    this.name = name;
+  }
+  houseMotto() {
+    console.log(`house motto from object`);
+  }
+  soldiers() {
+    console.log(`number of sodiers`);
+  }
+  goldAmount() {
+    console.log();
+  }
+}
+
+// ***** audio file function ***** //
 function playMusic() {
   const music = document.getElementById('audio');
   music.play();
@@ -24,9 +58,10 @@ function playMusic() {
 
 // ***** jquery ***** //
 $(() => {
+  //*********************************//
   /* DOM cache */
   // container for page
-  const $container = $('container');
+  const $container = $('.container');
 
   // story modal
   const $modal1 = $('#modal-story'); // This is the story modal
@@ -42,6 +77,7 @@ $(() => {
   const $texbox2 = $('#modal-textbox2'); // This is the textbox in the modal
   const $closedModal2 = $('#close2'); // this is the anchor tag that closes the modal
 
+  //*********************************//
   /* event handlers */
 
   // story modal
@@ -63,6 +99,7 @@ $(() => {
     $modal2.css('display', 'none');
   };
 
+  //*********************************//
   /* event listeners */
 
   // story modal

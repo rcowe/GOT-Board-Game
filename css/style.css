@@ -18,36 +18,50 @@ body {
 
 /* Begin app specific code */
 
-/* Body */
-/* html,
-body {
-  height: 100%;
-  width: 100%;
-  min-width: ; /* manipulate the element, and add positioning, transform */
-/* max-width: ;
-  margin: 0 0 0 0;
-} */
+/* main container */
 
-/* body { */
-/* top: 0;
-  left: 0;
+.container {
+  background-color: black;
+  left: 20%;
+  width: 899.5px;
+  height: 95vh;
+  max-width: 900px;
+  min-width: 899px;
+  position: relative;
+}
+
+/* westeros image container */
+
+.img-container {
   background-image: url(../images/Westeros_HBO.png);
-  background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center; 
-  color: black; */
-/* } */
+  position: absolute;
+  top: 60%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  width: 890.5px;
+  min-width: 890px;
+  max-width: 891px;
+  min-height: 1300px;
+  max-height: 1301px;
+}
 
-#background-image {
-  /* height: 100%;
-  width: 100%;
-  min-width: ; /* manipulate the element, and add positioning, transform */
-  /*max-width: ;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center; */
+/* houses div*/
+.houses {
+  width: 100.5px;
+  min-width: 699px;
+  max-width: 700px;
+  min-height: 1300px;
+  max-height: 1301px;
+}
+
+/* baratheon */
+#1Baratheon {
+  background-image: url(../images/house_sigils/House_Baratheon.png);
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Modals */
