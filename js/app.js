@@ -2,12 +2,33 @@
 
 // ***** sudo, self steps ***** //
 /* 
-Step 1. In html add background -- done. However, I want the image to be all in the page and locked in place. How can i do this?
+Set-up
+Step 1. In html add background -- done. 
 Step 2. Write storyline into html (Modals, Buttons, etc) -- done 
 Step 3. Create modal, that shows up upon loading page (figure out how to add images within modal) -- done, went with button to initialize 
 Step 4. In HTML, write DIVs for each house, add sigil image -- done 
 Step 5. Add css standard items -- done 
 Step 6. Position house sigils in correct locations
+Step 7. Make the sigils click-able OR place sigils and have user image show up when button is clicked to move through each location
+Step 8. Generate text box for user to interact with houses at location
+Step 9. Create user scoreboard image/box 
+
+Game play
+Step 1. When user arrives at house, generate text box/modal?, within this:
+  - computer will randomly select how many soldiers the house will give [present number]
+  - computer will randomly select how much gold the house will give [present number]
+  - computer will show the houses's goal, [show goal]
+Step 2: User interactions
+  - User can see buttons
+    - Accept Soldiers 
+    - Request More Soldiers
+    - Accept Gold 
+    - Request More Gold
+    - Accept Goal 
+    - Decline Goal
+      - If goal is accepted, then add gold,  soliders and house support to score board
+      - if goal is denied, warn user that they may not get enough support to defeat queen. Do not add score.
+Step 3: Alert that user must now go to next house
 */
 
 // ***** audio file function ***** //
