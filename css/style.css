@@ -71,7 +71,7 @@ html {
   background-color: rgb(247, 238, 238);
   justify-content: center;
   align-items: center;
-  display: block;
+  display: none;
   z-index: 1;
 }
 
@@ -117,4 +117,10 @@ button:focus {
 .danny-jon {
   display: flex;
   justify-content: flex-start;
+}
+
+/* new backgrounds for buttons */
+
+.map-martell {
+  background: url('../images/map_houses/map_martell.png');
 }
