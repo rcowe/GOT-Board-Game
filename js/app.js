@@ -255,11 +255,38 @@ $(() => {
   // ** Baratheon is different, because he lives there**
 
   $martellBtn.on('click', (event) => {
+    console.log(`i`);
     // change background image to map_baratheon
-    const mapMartell = $('.container ')
+    const mapMartell = $(event.currentTarget)
+      // .find('.img-container')
+      .removeClass('img.container')
+      .addClass('map-martell')
       .find('.img-container')
-      .removeClass()
-      .addClass('.map-martell');
+      .text('Remove')
+      .parent();
+
+    //   $martellBtn.on({
+    //     click: function(){
+    //         $(this).addClass('new-bg').removeClass('bg') // changes background on click
+    //     },
+    //     mousedown: function() {
+    //         // :active state
+    //     },
+    //     mouseup: function() {
+    //         // on click release
+    //     },
+    //     mouseenter: function() {
+    //         // on hover
+    //     },
+    //     mouseleave: function() {
+    //         // hover exit
+    //     }
+    //     /*
+    //       , hover: function(){
+    //            // or hover instead of enter/leave
+    //         }
+    //     */
+    // })
     // open the house information modal with baratheon sigil behind the modal
     // display modal template with how many soldiers and gold it has AND how many soldiers and gold they can give (plus buttons) AND show the goal of the house with buttons
     // *add button* Accept All, IF user accepts all house soldiers, gold and goal. Add all counts to the scoreboard.
