@@ -20,20 +20,22 @@
       <button id="openModal-GameInit">Game Story</button>
       <button id="land-baratheon">House Baratheon</button>
       <button id="land-martell">House Martell</button>
-      <button id="land-baratheon">House Tyrell</button>
-      <button id="land-baratheon">House Lannister</button>
-      <button id="land-baratheon">House Tully</button>
-      <button id="land-baratheon">House Arryn</button>
-      <button id="land-baratheon">House GreyJoy</button>
-      <button id="land-baratheon">House Stark</button>
-      <button id="land-baratheon">House Targaryan</button>
-      <button id="land-baratheon">Battle Queen</button> <!-- Make this button different -->
+      <button id="land-tyrell">House Tyrell</button>
+      <button id="land-lannister">House Lannister</button>
+      <button id="land-tully">House Tully</button>
+      <button id="land-arryn">House Arryn</button>
+      <button id="land-greyjoy">House GreyJoy</button>
+      <button id="land-stark">House Stark</button>
+      <button id="land-targaryan">House Targaryan</button>
+      <button id="battle">Battle Queen</button> <!-- Make this button different -->
     </div>
     
     <!--   GOT westeros map -->
     <div class="img-container">
     </div>
 
+    <!-- div for modals -->
+    <div class="entire-modals">
 
         <!--   Game Story Modal: Close, Content and Instruction button -->
         <div id="modal-story" tabindex="-1" role="dialog" aria-labelledby="storyModal" aria-hidden="true">
@@ -50,14 +52,11 @@
                       <img src="images/characters/madeline_cersei.png" />
                     </div>
                 </div>
-                  <p>Queen Daenerys lived, (add danny image here )she and King Ageon Targaryan (formerly Jon Snow) <br> 
-                    <div class="char-img">
+                  <p>Queen Daenerys lived, she and King Ageon Targaryan (formerly Jon Snow) <br> 
+                    <div class="danny-jon">
                       <div id="dany">
-                        <img src="" />
+                        <img src="images/characters/daenerys.jpeg" />
                       </div>
-                    </div>
-
-                    <div class="char-img">
                       <div id="jonsnow">
                         <img src="images/characters/nando_jonsnow.jpeg" />
                       </div>
@@ -65,16 +64,23 @@
                   of Crown House Targaryan, now rule the 6 kingdoms. Winterfell is independent of the crown, and is ruled by the
                   Queen in the North, Sansa Stark of House Stark. Almost all houses have been re-established, all except house
                   Frey. The Twins are home to an Inn for wary travelers.</p> <br>
+                  
+                  <div class="char-img">
+                    <div id="gendry">
+                      <img src="images/characters/gendry_baratheon.png" />
+                    </div>
                   <p>Since that fateful day, Queen Daenerys's actions have been questionable. She is cruel, unjust and paranoid.
-                  Someome must stop her. I, Gendry Storm (formerly, Rivers) of House Baratheon will rise against her. I am
-                  embarking on a journey to obtain support for my cause, will you help me? </p>
+                  Someome must stop her. I, Gendry Baratheon (formerly, Rivers) of House Baratheon will rise against her.<br>
+                    <br>
+                    <br>
+                    <br>
+                    I am embarking on a journey to obtain support for my cause, will you help me? </p>
               </div>
                 <button id="instructions">Game Instructions</button>
             </div>
           </div>
         </div>
     
-
 
         <!--   Instruction Story Modal: Close, Content and Game Start button -->
         <div id="modal-instructions" tabindex="-1" role="dialog" aria-labelledby="storyModal" aria-hidden="true">
@@ -101,50 +107,57 @@
         </div>
 
 
-    <!-- Modal for each House -->
-    <div id="modal-house-info">
-      <div class="modal-textbox3">
-        <a id="close3" href="#">Close</a>
-        <h1>This is House &nbsp<span class="house-name"></span>&nbsp.</h1>
-        <p>This House has &nbsp<span class="number-of-soldiers"></span>&nbsp soldiers.</p><br>
-        <p>They are willing to give you &nbsp<span class="number-of-soldiers-given"></span>&nbsp soldiers.</p><br> <!-- Added this class -->
-        <div class="soldiers-btns">
-          <button class="accept-soldier">Accept Soldiers</button>
-          <button class="request-more-soldiers">Request More Soldiers</button>
-        </div><br>
+      <!-- Modal for each House -->
+      <div id="modal-house-info">
+        <div class="modal-textbox3">
+          <a id="close3" href="#">Close</a>
+          <h1>This is House &nbsp<span class="house-name"></span>&nbsp.</h1>
+          <p>This House has &nbsp<span class="number-of-soldiers"></span>&nbsp soldiers.</p><br>
+          <p>They are willing to give you &nbsp<span class="number-of-soldiers-given"></span>&nbsp soldiers.</p><br> 
+          <div class="soldiers-btns">
+            <button class="accept-soldier">Accept Soldiers</button>
+            <button class="request-more-soldiers">Request More Soldiers</button>
+          </div><br>
 
-        <p>This House has &nbsp<span class="amount-of-gold"></span>&nbsp gold coins.</p><br>
-        <p>They are willing to give you &nbsp<span class="amount-of-gold-given"></span>&nbsp gold coins.</p><br> <!-- Added this class -->
-        <div class="gold-btns">
-          <button class="accept-gold">Accept Gold</button>
-          <button class="request-more-gold">Request More Gold</button>
-        </div><br>
+          <p>This House has &nbsp<span class="amount-of-gold"></span>&nbsp gold coins.</p><br>
+          <p>They are willing to give you &nbsp<span class="amount-of-gold-given"></span>&nbsp gold coins.</p><br> 
+          <div class="gold-btns">
+            <button class="accept-gold">Accept Gold</button>
+            <button class="request-more-gold">Request More Gold</button>
+          </div><br>
 
-        <p>House &nbsp<span class="house-namee"></span>&nbsp requests: &nbsp<span class="goal"></span>&nbsp in exchange for the soldiers and gold. Is this a trade you can make?</p><br>
-        <div class="goal-btns">
-          <button class="accept-goal">Accept Goal</button>
-          <button class="decline-goal">Decline Goal</button>
+          <p>House &nbsp<span class="house-namee"></span>&nbsp requests: &nbsp<span class="goal"></span>&nbsp in exchange for the soldiers and gold. Is this a trade you can make?</p><br>
+          <div class="goal-btns">
+            <button class="accept-goal">Accept Goal</button>
+            <button class="decline-goal">Decline Goal</button>
+          </div>
         </div>
       </div>
+      <!-- closing div for modals -->
     </div>
 
-    <div class="score-board">
-      <table>
-        <thead>
-          <tr><th>Number of Houses Pledged</th></tr>
-          <tr><th>Number of Soldiers</th></tr>
-          <tr><th>Number of Gold Coins</th></tr>
-        </thead>
-      <tbody>
-        <tr><td class="number-of-houses"></td></tr>
-        <tr><td class="number-of-soldiers"></td></tr>
-        <tr><td class="number-of-gold"></td></tr>
-      </tbody>
-      </table>
-    </div>
-
+  <div class="score-board">
+    <table>
+      <thead>
+        <tr><th>Number of Houses Pledged</th></tr>
+        <tr><th>Number of Soldiers</th></tr>
+        <tr><th>Number of Gold Coins</th></tr>
+      </thead>
+    <tbody>
+      <tr><td class="number-of-houses"></td></tr>
+      <tr><td class="number-of-soldiers"></td></tr>
+      <tr><td class="number-of-gold"></td></tr>
+    </tbody>
+    </table>
   </div>
 
+    <div class="buttons">
+      <div class="instructions-btn">
+        <button id="game-instructions-btn">Game Instructions</button>
+      </div>
+    </div>
+  </div>
+  
 
   <!--   audio file -->
   <audio id="audio" src="media/GOT Intro-Clip-AppVersion.mp3" loop="autoplay"></audio>

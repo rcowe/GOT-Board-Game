@@ -14,37 +14,14 @@ html {
 
 /* Begin app specific code */
 
-/* main container */
-/* .container {
-  background-color: black;
-  left: 15%;
-  width: 899.5px;
-  height: 95vh;
-  max-width: 900px;
-  min-width: 899px;
-  position: relative;
-} */
-
 /* westeros image container */
 .img-container {
-  background: url('../images/Westeros_HBO_largerr.png');
+  background: url('../images/Westeros.png');
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
   height: 1034px;
 }
-
-/* background-image: url(../images/Westeros_HBO.png);
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 60%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  width: 890.5px;
-  min-width: 890px;
-  max-width: 891px;
-  min-height: 1300px;
-  max-height: 1301px; */
 
 #modal-story,
 #modal-instructions {
@@ -61,11 +38,18 @@ html {
 }
 
 /* Important part to get the modal scroll working */
-#modal-textbox1,
+#modal-textbox1 {
+  background-color: rgb(247, 238, 238);
+  height: 600px;
+  width: 650px;
+  font-size: small;
+  overflow-y: initial;
+}
+
 #modal-textbox2 {
   background-color: rgb(247, 238, 238);
-  height: 700px;
-  width: 550px;
+  height: 400px;
+  width: 400px;
   font-size: small;
   overflow-y: initial;
 }
@@ -84,10 +68,10 @@ html {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(247, 238, 238);
   justify-content: center;
   align-items: center;
-  display: none;
+  display: block;
   z-index: 1;
 }
 
@@ -127,9 +111,10 @@ button:focus {
 
 .char-img {
   display: flex;
+  justify-content: center;
 }
 
-/* #cersei,
-#jonsnow {
+.danny-jon {
   display: flex;
-} */
+  justify-content: flex-start;
+}

@@ -169,7 +169,21 @@ $(() => {
   const $openHouseInfoModal = ''; // this will be each button created to play the game
   const $closeHouseInfoModal = $('#close3');
 
-  // all buttons would be manipulated within modal function//
+  // game play  buttons
+  const $baratheonBtn = $('#land-baratheon');
+  const $martellBtn = $('#land-martell');
+  const $tyrellBtn = $('#land-tyrell');
+  const $lannisterBtn = $('#land-lannister');
+  const $tully = $('#land-tully');
+  const $arryn = $('#land-arryn');
+  const $greyjoy = $('#land-greyjoy');
+  const $stark = $('#land-targaryan');
+
+  // battle button
+  const $battle = $('#battle');
+
+  // game instructions button
+  const $buttonGameIns = $('#game-instructions-btn');
 
   // stage, game works in stages aligned with Array of objects, starting point is 0 ending is 8
   let stage = 0;
@@ -201,7 +215,7 @@ $(() => {
 
   // show house information modal on screen
   const openHouseModal = (event) => {
-    $openHouseInfoModal.css('display', 'flex');
+    $houseInformationModal.css('display', 'flex');
   };
   const closeHouseModal = (event) => {
     $closeHouseInfoModal.css('display', 'none');
@@ -247,16 +261,22 @@ $(() => {
   $openStoryModal.on('click', openStoryModal);
   $closeStoryModalTag.on('click', closingStoryModal);
 
-  // buttons to open and close instructions modal
+  // buttons to open and close instructions modal (from inside story modal)
   $openInsModalBtn.on('click', () => {
     openInsModal();
     closingStoryModal();
   });
   $closeInsModalTag.on('click', closeInsModal);
 
+  // buttons to open and close instructions modal (from game screen)
+  $buttonGameIns.on('click', () => {
+    openInsModal();
+  });
+  // $closeInsModalTag.on('click', closeInsModal);
+
   // temporary button to open house info modal
   $embarkBtn.on('click', () => {
     closeInsModal();
-    manipulateHouseModal();
+    openHouseModal();
   });
 });
