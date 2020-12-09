@@ -31,19 +31,19 @@ Step 2: User interactions
 Step 3: Alert that user must now go to next house
 */
 
-// ***** audio file function ***** //
-function playMusic() {
-  const music = document.getElementById('audio');
-  music.play();
-  setTimeout(function () {
-    music.currentTime = 0;
-    music.pause();
-  }, 15000);
-}
+// ***** audio file function ***** // --------------Disabled for now
+// function playMusic() {
+//   const music = document.getElementById('audio');
+//   music.play();
+//   setTimeout(function () {
+//     music.currentTime = 0;
+//     music.pause();
+//   }, 15000);
+// }
 
 // ***** game set-up ***** //
 
-// array of objects to pull into class when generating houses
+// array of objects to hold information for the houses
 const allHouses = [
   {
     house: 'Baratheon',
@@ -102,92 +102,122 @@ const allHouses = [
   },
 ];
 
-// Hero Class, pulls from array of objects
-class Hero {
-  constructor(name) {
-    this.name = name;
-  }
-  trade() {
-    console.log(`you traded`);
-  }
-  moving_speech() {
-    console.log(`Gendry moving speech`);
-  }
-  score() {
-    console.log(`current score`);
-  }
-  currentObjects() {
-    console.log(`Gendry has..`);
-  }
-}
+// // Hero Class, pulls from array of objectsv ---------- May only need this for end of game battle
+// class Hero {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   trade() {
+//     console.log(`you traded`);
+//   }
+//   moving_speech() {
+//     console.log(`Gendry moving speech`);
+//   }
+//   score() {
+//     console.log(`current score`);
+//   }
+//   currentObjects() {
+//     console.log(`Gendry has..`);
+//   }
+// }
 
-// Houses Class, pulls from array
-class Houses {
-  constructor(name) {
-    this.name = name;
-  }
-  soldiers() {
-    console.log(`number of sodiers`);
-  }
-  goldAmount() {
-    console.log(`amount of gold`);
-  }
-  houseGoal() {
-    console.log(`house goal/desire`);
-  }
-}
+// // Houses Class, pulls from array ---------- May only need this for end of game battle
+// class Houses {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   soldiers() {
+//     console.log(`number of sodiers`);
+//   }
+//   goldAmount() {
+//     console.log(`amount of gold`);
+//   }
+//   houseGoal() {
+//     console.log(`house goal/desire`);
+//   }
+// }
 
 // ***** jquery ***** //
 
 $(() => {
   //*********************************//
   /* DOM cache */
+
   // container for page
   const $container = $('.container');
 
   // story modal
-  const $modal1 = $('#modal-story'); // This is the story modal
-  const $texbox1 = $('#modal-textbox1'); // This is the textbox in the modal
-  const $openModal1 = $('#openModal-GameInit'); // This is the button that opens the intro story modal
-  const $closedModal1 = $('#close1'); // this is the anchor tag that closes the modal
+  const $storyModal = $('#modal-story'); // This is the story modal
+  const $texbox1 = $('#modal-textbox1'); // This is the textbox in the modal *** maybe unnecessary***
+  const $openStoryModal = $('#openModal-GameInit'); // This is the button that opens the intro story modal
+  const $closeStoryModalTag = $('#close1'); // this is the anchor tag that closes the modal
 
   // game instructions button
-  const $openModal2 = $('#instructions'); // This is the button that opens the instruction modal
+  const $openInsModalBtn = $('#instructions'); // This is the button that opens the instruction modal
 
   // instructions modal
-  const $modal2 = $('#modal-instructions'); // This is the story modal
+  const $InstructionsModal = $('#modal-instructions'); // This is the story modal
   const $texbox2 = $('#modal-textbox2'); // This is the textbox in the modal
-  const $closedModal2 = $('#close2'); // this is the anchor tag that closes the modal
+  const $closeInsModalTag = $('#close2'); // this is the anchor tag that closes the modal
+
+  // start the game button
+  const $embarkBtn = $('#game-play'); // This is the button to start the game function at stage / location 0
+
+  // house information modal, for game play
+  const $houseInformationModal = $('#house-info');
+  const $texbox1 = $('#modal-textbox1'); // This is the textbox in the modal *** maybe unnecessary***
+  const $openHouseInfoModal = ''; // this will be each button created to play the game
+  const $closeHouseInfoModal = $('#close3');
+
+  // all buttons would be manipulated within modal function//
+
+  // stage, game works in stages aligned with Array of objects, starting point is 0 ending is 8
+  let stage = 0;
 
   //*********************************//
   /* event handlers */
 
-  // story modal
+  // story modal adding inside container
+  $storyModal.appendTo($container);
 
-  // adding inside container
-  $modal1.appendTo($container);
-  $modal2.appendTo($container);
-  const openModal1 = (event) => {
-    $modal1.css('display', 'flex');
+  // instructions modal adding inside container
+  $InstructionsModal.appendTo($container);
+
+  // show story modal on screen
+  const openStoryModal = (event) => {
+    $storyModal.css('display', 'flex');
   };
-  const closeModal1 = (event) => {
-    $modal1.css('display', 'none');
+  const closingStoryModal = (event) => {
+    $storyModal.css('display', 'none');
   };
-  // instructions modal
-  const openModal2 = (event) => {
-    $modal2.css('display', 'flex');
+
+  // show instructions modal on screen
+  const openInsModal = (event) => {
+    $InstructionsModal.css('display', 'flex');
   };
-  const closeModal2 = (event) => {
-    $modal2.css('display', 'none');
+  const closeInsModal = (event) => {
+    $InstructionsModal.css('display', 'none');
   };
+
+  // show house information modal on screen
+  const openHouseModal = (event) => {
+    $$openHouseInfoModal.css('display', 'flex');
+  };
+  const closeHouseModal = (event) => {
+    $closeHouseInfoModal.css('display', 'none');
+  };
+
+  // populating the scoreboard 
+  const populateScoreBoard
+
 
   //*********************************//
   /* event listeners */
 
   // story modal
-  $openModal1.on('click', openModal1);
-  $closedModal1.on('click', closeModal1);
+  $openStoryModal.on('click', openStoryModal);
+  $closeStoryModalTag.on('click', closingStoryModal);
   // instructions modal
-  $openModal2.on('click', openModal2);
-  $closedModal2.on('click', closeModal2);
+  $openInsModalBtn.on('click', openInsModal);
+  $closeInsModalTag.on('click', closeInsModal);
 });

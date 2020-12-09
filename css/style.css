@@ -12,14 +12,10 @@ html {
   font-size: 10px;
 }
 
-/* body {
-  box-sizing: border-box;
-} */
-
 /* Begin app specific code */
 
 /* main container */
-.container {
+/* .container {
   background-color: black;
   left: 15%;
   width: 899.5px;
@@ -27,21 +23,15 @@ html {
   max-width: 900px;
   min-width: 899px;
   position: relative;
-}
+} */
 
 /* westeros image container */
 .img-container {
-  background-image: url(../images/Westeros_HBO.png);
+  background: url('../images/Westeros_HBO.png');
   background-repeat: no-repeat;
-  position: absolute;
-  top: 60%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  width: 890.5px;
-  min-width: 890px;
-  max-width: 891px;
-  min-height: 1300px;
-  max-height: 1301px;
+  background-position: center;
+  width: 100%;
+  height: 752px;
 }
 
 /* background-image: url(../images/Westeros_HBO.png);
@@ -57,22 +47,6 @@ html {
   max-height: 1301px; */
 
 /* houses div*/
-.houses {
-  width: 100.5px;
-  min-width: 699px;
-  max-width: 700px;
-  min-height: 1300px;
-  max-height: 1301px;
-}
-
-/* baratheon */
-#1Baratheon {
-  background-image: url(../images/house_sigils/House_Baratheon.png);
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 /* Modals */
 #modal-story,
@@ -109,4 +83,9 @@ button:focus {
   animation: rotate-center 0.6s ease-in-out both;
 }
 
-/* House Divs*/
+/* Scoreboard */
+.score-board {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
