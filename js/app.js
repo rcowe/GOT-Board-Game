@@ -201,7 +201,7 @@ $(() => {
 
   // show house information modal on screen
   const openHouseModal = (event) => {
-    $$openHouseInfoModal.css('display', 'flex');
+    $openHouseInfoModal.css('display', 'flex');
   };
   const closeHouseModal = (event) => {
     $closeHouseInfoModal.css('display', 'none');
@@ -230,7 +230,7 @@ $(() => {
 
     // **re-visit
 
-    openHouseInfo();
+    openHouseModal();
 
     // calling populate scoreboard function
     populateScroreBoard(

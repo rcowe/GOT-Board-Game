@@ -27,11 +27,11 @@ html {
 
 /* westeros image container */
 .img-container {
-  background: url('../images/Westeros_HBO.png');
+  background: url('../images/Westeros_HBO_largerr.png');
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  height: 752px;
+  height: 1034px;
 }
 
 /* background-image: url(../images/Westeros_HBO.png);
@@ -45,29 +45,6 @@ html {
   max-width: 891px;
   min-height: 1300px;
   max-height: 1301px; */
-
-/* Modals */
-/* #modal-story,
-#modal-instructions {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-  display: none;
-  z-index: 1; This puts our modal in front of the body (which has a default z-index setting of `0`
-}
-#modal-textbox1,
-#modal-textbox2,
-#modal-textbox3 {
-  background-color: rgb(247, 238, 238);
-  height: 600px;
-  width: 550px;
-  font-size: small;
-} */
 
 #modal-story,
 #modal-instructions {
@@ -83,7 +60,7 @@ html {
   z-index: 1;
 }
 
-/* Important part */
+/* Important part to get the modal scroll working */
 #modal-textbox1,
 #modal-textbox2 {
   background-color: rgb(247, 238, 238);
@@ -93,13 +70,39 @@ html {
   overflow-y: initial;
 }
 
+/* for modal scroll function */
 #modal-body1,
 #modal-body2 {
   height: 80vh;
   overflow-y: auto;
 }
 
+/* modal for house game play */
+#modal-house-info {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  display: none;
+  z-index: 1;
+}
+
+#modal-textbox3 {
+  background-color: rgb(247, 238, 238);
+  height: 700px;
+  width: 550px;
+  font-size: small;
+}
+
 /* Buttons */
+#buttons {
+  display: flex;
+  justify-content: center;
+}
 button {
   margin-bottom: 1em;
   padding: 1em 3em;
@@ -121,8 +124,12 @@ button:focus {
 }
 
 /* #cersei image */
-#cersei {
+
+.char-img {
   display: flex;
-  /* height: 100px;
-  width: 75px; */
 }
+
+/* #cersei,
+#jonsnow {
+  display: flex;
+} */
