@@ -46,9 +46,29 @@ html {
   min-height: 1300px;
   max-height: 1301px; */
 
-/* houses div*/
-
 /* Modals */
+/* #modal-story,
+#modal-instructions {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  display: none;
+  z-index: 1; This puts our modal in front of the body (which has a default z-index setting of `0`
+}
+#modal-textbox1,
+#modal-textbox2,
+#modal-textbox3 {
+  background-color: rgb(247, 238, 238);
+  height: 600px;
+  width: 550px;
+  font-size: small;
+} */
+
 #modal-story,
 #modal-instructions {
   position: fixed;
@@ -60,13 +80,23 @@ html {
   justify-content: center;
   align-items: center;
   display: none;
-  z-index: 1; /*This puts our modal in front of the body (which has a default z-index setting of `0`*/
+  z-index: 1;
 }
+
+/* Important part */
 #modal-textbox1,
 #modal-textbox2 {
   background-color: rgb(247, 238, 238);
-  height: 350px;
+  height: 700px;
   width: 550px;
+  font-size: small;
+  overflow-y: initial;
+}
+
+#modal-body1,
+#modal-body2 {
+  height: 80vh;
+  overflow-y: auto;
 }
 
 /* Buttons */
@@ -88,4 +118,11 @@ button:focus {
   position: fixed;
   right: 0;
   bottom: 0;
+}
+
+/* #cersei image */
+#cersei {
+  display: flex;
+  /* height: 100px;
+  width: 75px; */
 }

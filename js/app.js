@@ -165,7 +165,7 @@ $(() => {
 
   // house information modal, for game play
   const $houseInformationModal = $('#house-info');
-  const $texbox1 = $('#modal-textbox1'); // This is the textbox in the modal *** maybe unnecessary***
+  const $texbox3 = $('#modal-textbox3'); // This is the textbox in the modal *** maybe unnecessary***
   const $openHouseInfoModal = ''; // this will be each button created to play the game
   const $closeHouseInfoModal = $('#close3');
 
@@ -207,17 +207,56 @@ $(() => {
     $closeHouseInfoModal.css('display', 'none');
   };
 
-  // populating the scoreboard 
-  const populateScoreBoard
+  // populating the scoreboard
+  const populateScoreBoard = (house, soldiers, gold) => {
+    // math.floor and math.random to populate the board
+    const availableSoldiers = Math.floor(Math.random() * soldiers + 1);
+    const availableGold = Math.floor(Math.random() * gold + 1);
 
+    // passing to scoreboard in dom
+    $('.number-of-houses').text(house);
+    $('.number-of-soldiers').text(availableSoldiers);
+    $('.number-of-gold').text(availableGold);
+  };
+
+  // passing house information to modal **** need this to be triggered by button based on stage *****
+  const manipulateHouseModal = (event) => {
+    // populate house information from array of objects at stage
+    $('.house-name').text(`${allHouses[stage].house}`);
+    $('.house-namee').text(`${allHouses[stage].house}`);
+    $('.number-of-soldiers').text(`${allHouses[stage].soldiers}`);
+    $('.amount-of-gold').text(`${allHouses[stage].gold}`);
+    $('.goal').text(`${allHouses[stage].goal}`);
+
+    // **re-visit
+
+    openHouseInfo();
+
+    // calling populate scoreboard function
+    populateScroreBoard(
+      stage + 1,
+      allHouses[stage].soldiers,
+      allHouses[stage].gold
+    );
+  };
 
   //*********************************//
   /* event listeners */
 
-  // story modal
+  // buttons to open and close story modal
   $openStoryModal.on('click', openStoryModal);
   $closeStoryModalTag.on('click', closingStoryModal);
-  // instructions modal
-  $openInsModalBtn.on('click', openInsModal);
+
+  // buttons to open and close instructions modal
+  $openInsModalBtn.on('click', () => {
+    openInsModal();
+    closingStoryModal();
+  });
   $closeInsModalTag.on('click', closeInsModal);
+
+  // temporary button to open house info modal
+  $embarkBtn.on('click', () => {
+    closeInsModal();
+    manipulateHouseModal();
+  });
 });

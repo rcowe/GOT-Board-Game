@@ -25,28 +25,65 @@
     </div>
 
 
-    <!--   Game Story Modal: Close, Content and Instruction button-->
-    <div id="modal-story">
-      <div id="modal-textbox1">
-        <a id="close1" href="#">Close</a>
-        <h1>Game of Thrones Board Game</h1>
-        <p>It's been 10 years since the Burning of King's Landing. Queen Cersei
-        <div id="cersei">
-          <img src="images/characters/madeline_cersei.png" />
+        <!--   Game Story Modal: Close, Content and Instruction button !!! Testing !!!-->
+        <div id="modal-story" tabindex="-1" role="dialog" aria-labelledby="storyModal" aria-hidden="true">
+          <div id="modal-textbox1" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;">
+            <div id="modal-content1">
+              <div class="modal-header1">
+                <a id="close1" href="#">Close</a>
+                <h1>Game of Thrones Board Game</h1>
+              </div>
+              <div id="modal-body1">
+                <p>It's been 10 years since the Burning of King's Landing</p><br> <p> Queen Cersei is presumed dead.</p>
+                  <div id="cersei">
+                    <img src="images/characters/madeline_cersei.png" />
+                  </div>
+                  <p>Queen Daenerys lived, she and King Ageon (formerly Jon Snow, *add image here*) Targaryan of
+                  Crown House Targaryan, now rule the 6 kingdoms. Winterfell is independent of the crown, and is ruled by the
+                  Queen in the North, Sansa Stark of House Stark. Almost all houses have been re-established, all except house
+                  Frey. The Twins are home to an Inn for wary travelers.</p> <br>
+                  <p>Since that fateful day, Queen Daenerys's actions have been questionable. She is cruel, unjust and paranoid.
+                  Someome must stop her. I, Gendry Storm (formerly, Rivers) of House Baratheon will rise against her. I am
+                  embarking on a journey to obtain support for my cause, will you help me? </p>
+              </div>
+                <button id="instructions">Game Instructions</button>
+            </div>
+          </div>
         </div>
-        was presumed dead. Queen Daenerys lived, she and King Ageon (formerly Jon Snow, *add image here*) Targaryan of
-        Crown House Targaryan, now rule the 6 kingdoms. Winterfell is independent of the crown, and is ruled by the
-        Queen in the North, Sansa Stark of House Stark. Almost all houses have been re-established, all except house
-        Frey. The Twins are home to an Inn for wary travelers.</p> <br>
-        <p>Since that fateful day, Queen Daenerys's actions have been questionable. She is cruel, unjust and paranoid.
-          Someome must stop her. I, Gendry Storm (formerly, Rivers) of House Baratheon will rise against her. I am
-          embarking on a journey to obtain support for my cause, will you help me? </p>
-        <button id="instructions">Game Instructions</button>
-      </div>
-    </div>
+    
+
+
+
+
+        <!--   Instruction Story Modal: Close, Content and Game Start button -->
+        <div id="modal-instructions" tabindex="-1" role="dialog" aria-labelledby="storyModal" aria-hidden="true">
+          <div id="modal-textbox2" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;">
+            <div id="modal-content2">
+              <div class="modal-header2">
+                <a id="close2" href="#">Close</a>
+                <h1>Game Instructions</h1>
+              </div>
+              <div id="modal-body2">
+                <p>The game is a simple one, you must guide Gendry through Westeros's great houses. He must obtain their
+                support, loyalty <br>... and gold.</p>
+                <p>Use each house's sigil to guide you through the game, always moving to the left. Be wary of King's Landing
+                for the queen must not find out - or she'll have his head!</p><br>
+                <p>While visiting each house, you must make desicions the lords and ladies will find favorable. This will gain
+                you points. When you've reached more than 400 points - you are ready to move against the Queen. Be wary of
+                liars, everyone has their own agenda.</p><br>
+                <p>Leaderboard will contain points obtained from Barathon pledged houses, they have given their support! For the
+                true King.</p>
+              </div>
+              <button id="game-play">Embark on Journey</button>
+            </div>
+          </div>
+        </div>
+
+
+
 
     <!--   Instruction Story Modal: Close, Content and Game Start button -->
-    <div id="modal-instructions">
+    <!-- <div id="modal-instructions">
       <div id="modal-textbox2">
         <a id="close2" href="#">Close</a>
         <h1>Game Instructions</h1>
@@ -61,7 +98,7 @@
           true King.</p>
         <button id="game-play">Embark on Journey</button>
       </div>
-    </div>
+    </div> -->
 
     <!-- Modal for each House -->
     <div id="modal-house-info">
