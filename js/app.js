@@ -252,16 +252,18 @@ $(() => {
 
   /*  manipulating the DOM */
 
-  // embark on journey
-  $embarkBtn.on('click', (event) => {
-    console.log(`landing in stormlands`);
-    const mapBaratheon = $('.img-container')
-      .removeClass('empty-westeros-bg')
-      .addClass('map-baratheon');
-  });
+  // embark on journey, baratheon
+
+  // $embarkBtn.on('click', (event) => {
+  //   console.log(`landing in stormlands`);
+  //   const mapBaratheon = $('.img-container')
+  //     .removeClass('empty-westeros-bg')
+  //     .addClass('map-baratheon');
   // because player is from house baratheon:
   // display modal template with how many soldiers and gold it has AND show the goal of the house with buttons
   // Add all counts to the scoreboard
+  // // exit modal screen and display empty map
+  // });
 
   // arrived at house martell
   $martellBtn.on('click', (event) => {
@@ -285,7 +287,7 @@ $(() => {
     // goal
     // if user hits accept, display modal with gendry stating yes i will give you this, or no i wont, random.
     // if user hits deny, display modal with gendry stating i cannot grant you this -  do not add ANY points to scoreboard
-    // exit modal screen and display map with next house sigil
+    // exit modal screen and display empty map
   });
 
   // populating the scoreboard ** works **
