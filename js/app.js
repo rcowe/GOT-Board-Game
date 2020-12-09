@@ -163,9 +163,6 @@ $(() => {
   const $texbox2 = $('#modal-textbox2'); // This is the textbox in the modal
   const $closeInsModalTag = $('#close2'); // this is the anchor tag that closes the modal
 
-  // start the game button
-  const $embarkBtn = $('#game-play-Btn'); // This is the button to start the game function at stage / location 0
-
   // game instructions button
   const $buttonGameIns = $('#game-instructions-btn');
 
@@ -218,6 +215,9 @@ $(() => {
 
   /* DOM cache */
 
+  // start the game button
+  const $embarkBtn = $('#game-play-Btn'); // This is the button to start the game function at stage / location 0
+
   // house information modal, for game play
   const $houseInformationModal = $('#house-info');
   const $texbox3 = $('#modal-textbox3'); // This is the textbox in the modal *** maybe unnecessary***
@@ -252,42 +252,26 @@ $(() => {
 
   /*  manipulating the DOM */
 
-  // ** Baratheon is different, because he lives there**
+  // embark on journey
+  $embarkBtn.on('click', (event) => {
+    console.log(`landing in stormlands`);
+    const mapBaratheon = $('.img-container')
+      .removeClass('empty-westeros-bg')
+      .addClass('map-baratheon');
+  });
+  // because player is from house baratheon:
+  // display modal template with how many soldiers and gold it has AND show the goal of the house with buttons
+  // Add all counts to the scoreboard
 
+  // arrived at house martell
   $martellBtn.on('click', (event) => {
-    console.log(`i`);
-    // change background image to map_baratheon
-    const mapMartell = $(event.currentTarget)
-      // .find('.img-container')
-      .removeClass('img.container')
-      .addClass('map-martell')
-      .find('.img-container')
-      .text('Remove')
-      .parent();
+    console.log(`changing martell background`);
+    // change background image to map_martell
+    const mapMartell = $('.img-container')
+      .removeClass('empty-westeros-bg')
+      .addClass('map-martell');
+    // open the house information modal with martell sigil behind the modal *strech goal*
 
-    //   $martellBtn.on({
-    //     click: function(){
-    //         $(this).addClass('new-bg').removeClass('bg') // changes background on click
-    //     },
-    //     mousedown: function() {
-    //         // :active state
-    //     },
-    //     mouseup: function() {
-    //         // on click release
-    //     },
-    //     mouseenter: function() {
-    //         // on hover
-    //     },
-    //     mouseleave: function() {
-    //         // hover exit
-    //     }
-    //     /*
-    //       , hover: function(){
-    //            // or hover instead of enter/leave
-    //         }
-    //     */
-    // })
-    // open the house information modal with baratheon sigil behind the modal
     // display modal template with how many soldiers and gold it has AND how many soldiers and gold they can give (plus buttons) AND show the goal of the house with buttons
     // *add button* Accept All, IF user accepts all house soldiers, gold and goal. Add all counts to the scoreboard.
     // soldiers

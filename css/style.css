@@ -19,6 +19,15 @@ html {
   background: url('../images/Westeros.png');
 }
 
+/* new backgrounds for buttons */
+.map-martell {
+  background: url('../images/map_houses/map_martell.png');
+}
+
+.map-baratheon {
+  background: url('../images/map_houses/map_baratheon.png');
+}
+
 /* westeros image container */
 .img-container {
   background-repeat: no-repeat;
@@ -66,6 +75,9 @@ html {
   overflow-y: auto;
 }
 
+/* background for for house game play modal */
+/* do similar and assign sigil, maybe - this is strech goal*/
+
 /* modal for house game play */
 #modal-house-info {
   position: fixed;
@@ -73,7 +85,7 @@ html {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(247, 238, 238);
+  /* background-color: rgb(247, 238, 238); */
   justify-content: center;
   align-items: center;
   display: none;
@@ -81,7 +93,7 @@ html {
 }
 
 #modal-textbox3 {
-  background-color: rgb(247, 238, 238);
+  /* background-color: rgb(247, 238, 238); */
   height: 700px;
   width: 550px;
   font-size: small;
@@ -122,10 +134,4 @@ button:focus {
 .danny-jon {
   display: flex;
   justify-content: flex-start;
-}
-
-/* new backgrounds for buttons */
-
-.map-martell {
-  background: url('../images/map_houses/map_martell.png');
 }
