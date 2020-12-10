@@ -312,9 +312,11 @@ $(() => {
     return compResponse;
   };
 
-  // const populate house modal info not for scoreboard
-  const houseModalInformation = (allSoldiers, allGold) => {
-    $('.');
+  // change background picture
+  const changeImage = () => {
+    $('.img-container')
+      .removeClass('.empty-westeros-bg')
+      .addClass('.map-martell');
   };
 
   /* soldiers */
@@ -333,10 +335,9 @@ $(() => {
   const martellBtn = () => {
     console.log(`martell was triggered`);
     stage++;
+
     // Change Background Image && arrived at house
-    const changeImage = $('.img-container')
-      .removeClass('.empty-westeros-bg')
-      .addClass('.map-martell');
+    changeImage();
 
     setTimeout(() => {
       openHouseModal();
@@ -346,7 +347,7 @@ $(() => {
       $('.house-namee').text(allHouses[stage].house);
       $('.number-of-soldiers').text(allHouses[stage].soldiers);
       $('.amount-of-gold').text(allHouses[stage].gold);
-      $('.number-of-soldiers-given').text(`${army()}`);
+      $('.number-of-soldiers-given').text(army());
       $('.amount-of-gold-given').text(`${coins()}`);
       $('.goal').text(allHouses[stage].goal);
 
