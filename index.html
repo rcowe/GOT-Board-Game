@@ -31,6 +31,8 @@
     <!--   GOT westeros map -->
     <div href="#" class="img-container empty-westeros-bg">
     </div>
+
+    <!-- divs for pushing maps to background-->
       <div class="map-baratheon"></div>
       <div class="map-martell"></div>
       <div class="map-lannister"></div>
@@ -39,10 +41,6 @@
       <div class="map-greyjoy"></div>
       <div class="map-stark"></div>
       <div class="map-targaryen"></div>
-
-
-    <div class="new-backgrounds">
-    </div>
 
     <!-- div for modals -->
     <div class="entire-modals">
@@ -149,35 +147,35 @@
             <button class="accept-gold-btn">Accept Gold</button>
             <button class="request-more-gold-btn">Request More Gold</button>
           </div>
+          </div>
         
 
-          <div class="modal-house-section">
-            <p>House &nbsp<span class="house-namee"></span>&nbsp requests: &nbsp<span class="goal"></span>&nbsp in
-              exchange for the soldiers and gold. Is this a trade you can make?</p><br>
-            <div class="goal-btns">
-              <button class="accept-goal-btn">Accept Goal</button>
-              <button class="decline-goal-btn">Decline Goal</button>
+            <div class="modal-house-section">
+              <p>House &nbsp<span class="house-namee"></span>&nbsp requests: &nbsp<span class="goal"></span>&nbsp in
+                exchange for the soldiers and gold. Is this a trade you can make?</p><br>
+              <div class="goal-btns">
+                <button class="accept-goal-btn">Accept Goal</button>
+                <button class="decline-goal-btn">Decline Goal</button>
+              </div>
             </div>
-          </div>
-          <button class="modal-house-acceptAll-btn">Accept All Conditions</button>
+            <button class="modal-house-acceptAll-btn">Accept All Conditions</button>
         </div>
       </div>
       
 
       <!-- Baratheon Modal -->
       <div id="modal-house-baratheon">
-        <div class="modal-textbox-baratheon">
+        <div id="modal-textbox-baratheon">
           <a id="baratheon-close-btn" href="#">Close</a>
           <h1>This is House Baratheon.</h1>
           <p>This House has 500 soldiers.</p><br>
           <p>This House has 10,000 gold coins.</p><br>
           <button class="baratheon-accept">Accept All</button>
-        </div>
-
+          </div>
       </div>
 
-      <!-- closing div for modals -->
-    </div>
+    </div>  <!-- closing div for modals -->
+    
 
     <div class="score-board">
       <table>
@@ -221,6 +219,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!--   my code -->
     <script src="js/app.js" class="app"></script>
+  </div>
+</div>
 </body>
 
 </html>
