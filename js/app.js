@@ -246,8 +246,8 @@ $(() => {
       console.log(`baratheon show modal`);
 
       $('.baratheon-accept').on('click', () => {
-        // console.log(allHouses[stage].soldiers, 'line 240');
-        // console.log(allHouses[stage].gold, 'line 241');
+        console.log(allHouses[stage].soldiers, 'line 240');
+        console.log(allHouses[stage].gold, 'line 241');
         populateScoreBoard(
           stage + 1,
           allHouses[stage].soldiers,
@@ -263,9 +263,20 @@ $(() => {
     stage++;
   });
 
+  // in order to access
+  let soldiers;
+  let gold;
+
   // soldiers and gold amounts randomizer
-  let army = Math.floor(Math.random() * soldiers + 1);
-  let coins = Math.floor(Math.random() * gold + 1);
+  const army = () => {
+    let randomArmy = Math.floor(Math.random() * soldiers + 1);
+    return randomArmy;
+  };
+
+  const coins = () => {
+    let randomCoins = Math.floor(Math.random() * gold + 1);
+    return randomCoins;
+  };
 
   // populating the scoreboard
   const populateScoreBoard = (house, soldiers, gold) => {
@@ -320,6 +331,7 @@ $(() => {
 
   // house martell button
   const martellBtn = () => {
+    console.log(`martell was triggered`);
     // Change Background Image && arrived at house
     const changeImage = $('.img-container')
       .removeClass('.empty-westeros-bg')
@@ -403,7 +415,9 @@ $(() => {
   };
 
   // running buttons
-  $martellBtn.on('click', martellBtn());
+  $martellBtn.on('click', () => {
+    martellBtn();
+  });
 
   // ***** jquery ending ***** //
 });

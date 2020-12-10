@@ -82,8 +82,7 @@ html {
 #modal-story,
 #modal-instructions,
 #modal-house-baratheon,
-#modal-house-info,
-#modal-house-baratheon {
+#modal-house-info {
   position: fixed;
   top: 0;
   left: 0;
@@ -120,12 +119,12 @@ html {
   font-size: small;
 }
 
-.modal-textbox-baratheon {
+/* .modal-textbox-baratheon {
   background-color: rgb(247, 238, 238);
   height: 600px;
   width: 650px;
   font-size: small;
-}
+} */
 
 /* for modal scroll function */
 #modal-body1,
@@ -133,9 +132,6 @@ html {
   height: 80vh;
   overflow-y: auto;
 }
-
-/* background for for house game play modal */
-/* do similar and assign sigil, maybe - this is strech goal*/
 
 /* Buttons */
 #buttons {
@@ -174,6 +170,6 @@ button:focus {
   justify-content: flex-start;
 }
 
-/* #modal-house-baratheon {
+#modal-house-baratheon {
   display: none;
-} */
+}
