@@ -260,7 +260,7 @@ $(() => {
       });
     }, 2000);
 
-    stage++;
+    // stage++;
   });
 
   // in order to access
@@ -332,6 +332,7 @@ $(() => {
   // house martell button
   const martellBtn = () => {
     console.log(`martell was triggered`);
+    stage++;
     // Change Background Image && arrived at house
     const changeImage = $('.img-container')
       .removeClass('.empty-westeros-bg')
@@ -358,7 +359,7 @@ $(() => {
         })
       ) {
         populateScoreBoard(
-          stage,
+          stage + 1,
           allHouses[stage].soldiers,
           allHouses[stage].gold
         );
@@ -411,7 +412,7 @@ $(() => {
           `It is unfortunate we could not work together, perhaps in future. Best of luck.`
         );
       });
-    }, 2000);
+    }, 3000);
   };
 
   // running buttons

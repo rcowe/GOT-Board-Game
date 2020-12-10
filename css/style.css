@@ -112,8 +112,8 @@ html {
   overflow-y: initial;
 }
 
-#modal-textbox3 {
-  background-color: rgb(245, 239, 239);
+.modal-textbox3 {
+  background-color: rgb(247, 238, 238);
   height: 700px;
   width: 550px;
   font-size: small;
