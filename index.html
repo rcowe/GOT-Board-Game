@@ -16,9 +16,8 @@
     
     <!-- Game story button -->
     <div class="buttons">
-      <!-- <button id="openModal-GameInit" onclick="playMusic()">Game Story</button> -->
-      <button id="openModal-GameInit">Game Story</button>
-      <!-- <button id="land-baratheon-Btn">House Baratheon</button> -->
+      <button id="openModal-GameInit" onclick="playMusic()">Game Story</button>
+      <!-- <button id="openModal-GameInit">Game Story</button> -->
       <button id="land-martell-Btn">House Martell</button>
       <button id="land-tyrell-Btn">House Tyrell</button>
       <button id="land-lannister-Btn">House Lannister</button>
@@ -26,7 +25,6 @@
       <button id="land-arryn-Btn">House Arryn</button>
       <button id="land-greyjoy-Btn">House GreyJoy</button>
       <button id="land-stark-Btn">House Stark</button>
-      <button id="land-targaryan-Btn">House Targaryan</button>
       <button id="battle-Btn">Battle Queen</button> <!-- Make this button different -->
     </div>
     
@@ -35,84 +33,98 @@
     </div>
       <div class="map-baratheon"></div>
       <div class="map-martell"></div>
-      <div class="map-tyrell"></div>
-      <!-- to add remaining ones -->
+      <div class="map-lannister"></div>
+      <div class="map-tully"></div>
+      <div class="map-arryn"></div>
+      <div class="map-greyjoy"></div>
+      <div class="map-stark"></div>
+      <div class="map-targaryen"></div>
+
 
     <div class="new-backgrounds">
-
     </div>
 
     <!-- div for modals -->
     <div class="entire-modals">
 
-        <!--   Game Story Modal: Close, Content and Instruction button -->
-        <div id="modal-story" tabindex="-1" role="dialog" aria-labelledby="storyModal" aria-hidden="true">
-          <div id="modal-textbox1" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;">
-            <div id="modal-content1">
-              <div class="modal-header1">
-                <a id="close1" href="#">Close</a>
-                <h1>Game of Thrones Board Game</h1>
-              </div>
-              <div id="modal-body1">
-                <p>It's been 10 years since the Burning of King's Landing</p><br> <p> Queen Cersei is presumed dead.</p>
-                  <div class="char-img">
-                    <div id="cersei">
-                      <img src="images/characters/madeline_cersei.png" />
-                    </div>
+      <!--   Game Story Modal: Close, Content and Instruction button -->
+      <div id="modal-story" tabindex="-1" role="dialog" aria-labelledby="storyModal" aria-hidden="true">
+        <div id="modal-textbox1" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;">
+          <div id="modal-content1">
+            <div class="modal-header1">
+              <a id="close1" href="#">Close</a>
+              <h1>Game of Thrones Board Game</h1>
+            </div>
+            <div id="modal-body1">
+              <p>It's been 10 years since the Burning of King's Landing</p><br>
+              <p> Queen Cersei is presumed dead.</p>
+              <div class="char-img">
+                <div id="cersei">
+                  <img src="images/characters/madeline_cersei.png" />
                 </div>
-                  <p>Queen Daenerys lived, she and King Ageon Targaryan (formerly Jon Snow) <br> 
-                    <div class="danny-jon">
-                      <div id="dany">
-                        <img src="images/characters/daenerys.jpeg" />
-                      </div>
-                      <div id="jonsnow">
-                        <img src="images/characters/nando_jonsnow.jpeg" />
-                      </div>
-                    </div>
-                  of Crown House Targaryan, now rule the 6 kingdoms. Winterfell is independent of the crown, and is ruled by the
-                  Queen in the North, Sansa Stark of House Stark. Almost all houses have been re-established, all except house
-                  Frey. The Twins are home to an Inn for wary travelers.</p> <br>
-                  
-                  <div class="char-img">
-                    <div id="gendry">
-                      <img src="images/characters/gendry_baratheon.png" />
-                    </div>
-                  <p>Since that fateful day, Queen Daenerys's actions have been questionable. She is cruel, unjust and paranoid.
-                  Someome must stop her. I, Gendry Baratheon (formerly, Rivers) of House Baratheon will rise against her.<br>
-                    <br>
-                    <br>
-                    <br>
-                    I am embarking on a journey to obtain support for my cause, will you help me? </p>
               </div>
-                <button id="instructions">Game Instructions</button>
-            </div>
-          </div>
-        </div>
-    
+              <p>Queen Daenerys lived, she and King Ageon Targaryan (formerly Jon Snow) <br>
+              <div class="danny-jon">
+                <div id="dany">
+                  <img src="images/characters/daenerys.jpeg" />
+                </div>
+                <div id="jonsnow">
+                  <img src="images/characters/nando_jonsnow.jpeg" />
+                </div>
+              </div>
+              of Crown House Targaryan, now rule the 6 kingdoms. Winterfell is independent of the crown, and is ruled by
+              the
+              Queen in the North, Sansa Stark of House Stark. Almost all houses have been re-established, all except
+              house
+              Frey. The Twins are home to an Inn for wary travelers.</p> <br>
 
-        <!--   Instruction Story Modal: Close, Content and Game Start button -->
-        <div id="modal-instructions" tabindex="-1" role="dialog" aria-labelledby="storyModal" aria-hidden="true">
-          <div id="modal-textbox2" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;">
-            <div id="modal-content2">
-              <div class="modal-header2">
-                <a id="close2" href="#">Close</a>
-                <h1>Game Instructions</h1>
+              <div class="char-img">
+                <div id="gendry">
+                  <img src="images/characters/gendry_baratheon.png" />
+                </div>
+                <p>Since that fateful day, Queen Daenerys's actions have been questionable. She is cruel, unjust and
+                  paranoid.
+                  Someome must stop her. I, Gendry Baratheon (formerly, Rivers) of House Baratheon will rise against
+                  her.<br>
+                  <br>
+                  <br>
+                  <br>
+                  I am embarking on a journey to obtain support for my cause, will you help me? </p>
               </div>
-              <div id="modal-body2">
-                <p>The game is a simple one, you must guide Gendry through Westeros's great houses. He must obtain their
-                support, loyalty <br>... and gold.</p>
-                <p>Use each house's sigil to guide you through the game, always moving to the left. Be wary of King's Landing
-                for the queen must not find out - or she'll have his head!</p><br>
-                <p>While visiting each house, you must make desicions the lords and ladies will find favorable. This will gain
-                you points. When you've reached more than 400 points - you are ready to move against the Queen. Be wary of
-                liars, everyone has their own agenda.</p><br>
-                <p>Leaderboard will contain points obtained from Barathon pledged houses, they have given their support! For the
-                true King.</p>
-              </div>
-              <button id="game-play-Btn">Embark on Journey</button>
+              <button id="instructions">Game Instructions</button>
             </div>
           </div>
         </div>
+      </div>
+
+
+      <!--   Instruction Story Modal: Close, Content and Game Start button -->
+      <div id="modal-instructions" tabindex="-1" role="dialog" aria-labelledby="storyModal" aria-hidden="true">
+        <div id="modal-textbox2" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;">
+          <div id="modal-content2">
+            <div class="modal-header2">
+              <a id="close2" href="#">Close</a>
+              <h1>Game Instructions</h1>
+            </div>
+            <div id="modal-body2">
+              <p>The game is a simple one, you must guide Gendry through Westeros's great houses. He must obtain their
+                support, loyalty <br>... and gold.</p>
+              <p>Use each house's sigil to guide you through the game, always moving to the left. Be wary of King's
+                Landing
+                for the queen must not find out - or she'll have his head!</p><br>
+              <p>While visiting each house, you must make desicions the lords and ladies will find favorable. This
+                will gain
+                you points. When you've reached more than 400 points - you are ready to move against the Queen. Be
+                wary of
+                liars, everyone has their own agenda.</p><br>
+              <p>Leaderboard will contain points obtained from Barathon pledged houses, they have given their support!
+                For the
+                true King.</p>
+            </div>
+            <button id="game-play-Btn">Embark on Journey</button>
+          </div>
+        </div>
+      </div>
 
 
       <!-- Modal for each House -->
@@ -121,59 +133,85 @@
           <a id="close3" href="#">Close</a>
           <h1>This is House &nbsp<span class="house-name"></span>&nbsp.</h1>
           <p>This House has &nbsp<span class="number-of-soldiers"></span>&nbsp soldiers.</p><br>
-          <p>They are willing to give you &nbsp<span class="number-of-soldiers-given"></span>&nbsp soldiers.</p><br> 
+          <p>They are willing to give you &nbsp<span class="number-of-soldiers-given"></span>&nbsp soldiers.</p><br>
           <div class="soldiers-btns">
             <button class="accept-soldier">Accept Soldiers</button>
             <button class="request-more-soldiers">Request More Soldiers</button>
           </div><br>
 
           <p>This House has &nbsp<span class="amount-of-gold"></span>&nbsp gold coins.</p><br>
-          <p>They are willing to give you &nbsp<span class="amount-of-gold-given"></span>&nbsp gold coins.</p><br> 
+          <p>They are willing to give you &nbsp<span class="amount-of-gold-given"></span>&nbsp gold coins.</p><br>
           <div class="gold-btns">
             <button class="accept-gold">Accept Gold</button>
             <button class="request-more-gold">Request More Gold</button>
           </div><br>
 
-          <p>House &nbsp<span class="house-namee"></span>&nbsp requests: &nbsp<span class="goal"></span>&nbsp in exchange for the soldiers and gold. Is this a trade you can make?</p><br>
+          <p>House &nbsp<span class="house-namee"></span>&nbsp requests: &nbsp<span class="goal"></span>&nbsp in
+            exchange for the soldiers and gold. Is this a trade you can make?</p><br>
           <div class="goal-btns">
             <button class="accept-goal">Accept Goal</button>
             <button class="decline-goal">Decline Goal</button>
           </div>
         </div>
       </div>
+
+      <!-- Baratheon Modal -->
+      <div id="modal-house-baratheon">
+        <div class="modal-textbox-baratheon">
+          <a id="baratheon-close-btn" href="#">Close</a>
+          <h1>This is House Baratheon.</h1>
+          <p>This House has 500 soldiers.</p><br>
+          <p>This House has 10,000 gold coins.</p><br>
+          <button class="baratheon-accept">Accept All</button>
+        </div>
+
+      </div>
+
       <!-- closing div for modals -->
     </div>
 
-  <div class="score-board">
-    <table>
-      <thead>
-        <tr><th>Number of Houses Pledged</th></tr>
-        <tr><th>Number of Soldiers</th></tr>
-        <tr><th>Number of Gold Coins</th></tr>
-      </thead>
-    <tbody>
-      <tr><td class="number-of-houses"></td></tr>
-      <tr><td class="number-of-soldiers"></td></tr>
-      <tr><td class="number-of-gold"></td></tr>
-    </tbody>
-    </table>
-  </div>
+    <div class="score-board">
+      <table>
+        <thead>
+          <tr>
+            <th>Number of Houses Pledged</th>
+          </tr>
+          <tr>
+            <th>Number of Soldiers</th>
+          </tr>
+          <tr>
+            <th>Number of Gold Coins</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="number-of-houses"></td>
+          </tr>
+          <tr>
+            <td class="number-of-soldiers"></td>
+          </tr>
+          <tr>
+            <td class="number-of-gold"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <div class="buttons">
       <div class="instructions-btn">
         <button id="game-instructions-btn">Game Instructions</button>
       </div>
     </div>
-  </div>
-  
 
-  <!--   audio file -->
-  <audio id="audio" src="media/GOT Intro-Clip-AppVersion.mp3" loop="autoplay"></audio>
 
-  <!--   jQuery -->
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <!--   my code -->
-  <script src="js/app.js" class="app"></script>
+
+    <!--   audio file -->
+    <audio id="audio" src="media/GOT Intro-Clip-AppVersion.mp3" loop="autoplay"></audio>
+
+    <!--   jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!--   my code -->
+    <script src="js/app.js" class="app"></script>
 </body>
 
 </html>

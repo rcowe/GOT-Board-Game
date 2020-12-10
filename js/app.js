@@ -32,14 +32,14 @@ Step 3: Alert that user must now go to next house
 */
 
 // ***** audio file function ***** // --------------Disabled for now
-// function playMusic() {
-//   const music = document.getElementById('audio');
-//   music.play();
-//   setTimeout(function () {
-//     music.currentTime = 0;
-//     music.pause();
-//   }, 15000);
-// }
+function playMusic() {
+  const music = document.getElementById('audio');
+  music.play();
+  setTimeout(function () {
+    music.currentTime = 0;
+    music.pause();
+  }, 15000);
+}
 
 // ***** global scope ***** //
 
@@ -101,41 +101,6 @@ const allHouses = [
     goal: 'Place in court',
   },
 ];
-
-// // Hero Class, pulls from array of objectsv ---------- May only need this for end of game battle
-// class Hero {
-//   constructor(name) {
-//     this.name = name;
-//   }
-//   trade() {
-//     console.log(`you traded`);
-//   }
-//   moving_speech() {
-//     console.log(`Gendry moving speech`);
-//   }
-//   score() {
-//     console.log(`current score`);
-//   }
-//   currentObjects() {
-//     console.log(`Gendry has..`);
-//   }
-// }
-
-// // Houses Class, pulls from array ---------- May only need this for end of game battle
-// class Houses {
-//   constructor(name) {
-//     this.name = name;
-//   }
-//   soldiers() {
-//     console.log(`number of sodiers`);
-//   }
-//   goldAmount() {
-//     console.log(`amount of gold`);
-//   }
-//   houseGoal() {
-//     console.log(`house goal/desire`);
-//   }
-// }
 
 // ***** jquery ***** //
 
@@ -219,12 +184,12 @@ $(() => {
   const $embarkBtn = $('#game-play-Btn'); // This is the button to start the game function at stage / location 0
 
   // house information modal, for game play
-  const $houseInformationModal = $('#house-info');
+  const $houseInformationModal = $('#modal-house-info');
   const $texbox3 = $('#modal-textbox3'); // This is the textbox in the modal *** maybe unnecessary***
-  // const $openHouseInfoModal = ''; // this will be each button created to play the game
   const $closeHouseInfoModal = $('#close3');
 
   // game play  buttons
+  // changing background buttons and triggering game functions
   const $baratheonBtn = $('#land-baratheon-Btn');
   const $martellBtn = $('#land-martell-Btn');
   const $tyrellBtn = $('#land-tyrell-Btn');
@@ -239,98 +204,235 @@ $(() => {
 
   /* event handlers */
 
-  // stage, game works in stages aligned with Array of objects, starting point is 0 ending is 8
+  // stage, game works in stages aligned with Array of objects, starting point is 0
   let stage = 0;
 
   // show house information modal on screen
-  // const openHouseModal = (event) => {
-  //   $houseInformationModal.css('display', 'flex');
-  // };
+  const openHouseModal = (event) => {
+    $houseInformationModal.css('display', 'flex');
+  };
+
   const closeHouseModal = (event) => {
+    /// may not need this
     $closeHouseInfoModal.css('display', 'none');
   };
 
   /*  manipulating the DOM */
 
-  // embark on journey, baratheon
-
-  // $embarkBtn.on('click', (event) => {
-  //   console.log(`landing in stormlands`);
-  //   const mapBaratheon = $('.img-container')
-  //     .removeClass('empty-westeros-bg')
-  //     .addClass('map-baratheon');
-  // because player is from house baratheon:
-  // display modal template with how many soldiers and gold it has AND show the goal of the house with buttons
-  // Add all counts to the scoreboard
-  // // exit modal screen and display empty map
-  // });
-
-  // arrived at house martell
-  $martellBtn.on('click', (event) => {
-    console.log(`changing martell background`);
-    // change background image to map_martell
-    const mapMartell = $('.img-container')
-      .removeClass('empty-westeros-bg')
-      .addClass('map-martell');
-    // open the house information modal with martell sigil behind the modal *strech goal*
-
-    // display modal template with how many soldiers and gold it has AND how many soldiers and gold they can give (plus buttons) AND show the goal of the house with buttons
-    // *add button* Accept All, IF user accepts all house soldiers, gold and goal. Add all counts to the scoreboard.
-    // soldiers
-    // if user hits accept soldiers, scoreboard soldiers count is populated
-    // if user hits request more, display random response from house rejecting request and stating they will not give soldiers
-    // OR have house accept request and populate scoreboard ** random **
-    // gold
-    // if user hits accept gold, scoreboard gold count is populated
-    // if user hits request more, display random response from house rejecting request and stating they will not give gold
-    // OR have house accept request and populate scoreboard ** random **
-    // goal
-    // if user hits accept, display modal with gendry stating yes i will give you this, or no i wont, random.
-    // if user hits deny, display modal with gendry stating i cannot grant you this -  do not add ANY points to scoreboard
-    // exit modal screen and display empty map
-  });
-
-  // populating the scoreboard ** works **
-  const populateScoreBoard = (house, soldiers, gold) => {
-    // math.floor and math.random to populate the board
-    const availableSoldiers = Math.floor(Math.random() * soldiers + 1);
-    const availableGold = Math.floor(Math.random() * gold + 1);
-
-    // passing to scoreboard in dom
-    $('.number-of-houses').text(house);
-    $('.number-of-soldiers').text(availableSoldiers);
-    $('.number-of-gold').text(availableGold);
-  };
-
-  // passing house information to modal **** need this to be triggered by button based on stage *****
+  // stage 0, house baratheon modal
   $embarkBtn.on('click', (event) => {
-    const manipulateHouseModal = $(event.currentTarget);
-
     closeInsModal();
 
-    $houseInformationModal.css('display', 'flex');
+    // Change Background Image
+    const mapBaratheon = $('.img-container')
+      .removeClass('empty-westeros-bg')
+      .addClass('map-baratheon');
 
-    // populate house information from array of objects at stage
-    $('.house-name').text(`${allHouses[stage].house}`);
-    $('.house-namee').text(`${allHouses[stage].house}`);
-    $('.number-of-soldiers').text(`${allHouses[stage].soldiers}`);
-    $('.amount-of-gold').text(`${allHouses[stage].gold}`);
-    $('.goal').text(`${allHouses[stage].goal}`);
+    setTimeout(() => {
+      console.log(`baratheon`);
 
-    // calling populate scoreboard function
-    populateScoreBoard(
-      stage + 1,
-      allHouses[stage].soldiers,
-      allHouses[stage].gold
-    );
+      $('#modal-house-baratheon').css('display', 'flex');
+
+      console.log(`baratheon show modal`);
+
+      $('.baratheon-accept').on('click', () => {
+        // console.log(allHouses[stage].soldiers, 'line 240');
+        // console.log(allHouses[stage].gold, 'line 241');
+        populateScoreBoard(
+          stage + 1,
+          allHouses[stage].soldiers,
+          allHouses[stage].gold
+        );
+
+        $('#modal-house-baratheon').css('display', 'none');
+
+        mapBaratheon.removeClass('map-baratheon').addClass('empty-westeros-bg');
+      });
+
+      // stage++;
+    }, 2000);
   });
 
-  //*********************************//
+  let army;
+  let coins;
 
-  /* event listeners */
-  // temporary button to open house info modal
-  // $embarkBtn.on('click', () => {
-  //   closeInsModal();
-  //   manipulateHouseModal();
+  // populating the scoreboard
+  const populateScoreBoard = (house, soldiers, gold) => {
+    // console.log(gold);
+    // console.log(soldiers);
+
+    if (house === 1) {
+      $('.number-of-houses').text(house);
+      $('.number-of-soldiers').text(soldiers);
+      $('.number-of-gold').text(gold);
+    } else if (house !== 1) {
+      army = Math.floor(Math.random() * soldiers + 1);
+      coins = Math.floor(Math.random() * gold + 1);
+      let totalSoldiers;
+      let totalGold;
+      totalSoldiers += army;
+      totalGold += coins;
+      $('.number-of-houses').text(house);
+      $('.number-of-soldiers').text(totalSoldiers);
+      $('.number-of-gold').text(totalGold);
+    } else {
+      alert(`You have found a bug!`);
+    }
+  };
+
+  // plaing game through buttons
+  const gameButtons = () => {
+    stage++;
+    // Change Background Image && arrived at house
+    const changeImage = (removing, adding) => {
+      $('.img-container').removeClass(`${removing}`).addClass(`${adding}`);
+    };
+    setTimeout(() => {
+      openHouseModal();
+
+      console.log(`show modal`);
+
+      // create
+
+      // $('.baratheon-accept').on('click', () => {
+      //   // console.log(allHouses[stage].soldiers, 'line 240');
+      //   // console.log(allHouses[stage].gold, 'line 241');
+      //   populateScoreBoard(
+      //     stage + 1,
+      //     allHouses[stage].soldiers,
+      //     allHouses[stage].gold
+      //   );
+
+      //   closeHouseModal();
+
+      //   mapBaratheon.removeClass('map-baratheon').addClass('empty-westeros-bg');
+      // });
+    }, 2000);
+  };
+
+  // display modal template with how many soldiers and gold it has AND how many soldiers and gold they can give (plus buttons) AND show the goal of the house with buttons
+  // *add button* Accept All, IF user accepts all house soldiers, gold and goal. Add all counts to the scoreboard.
+  // soldiers
+  // if user hits accept soldiers, scoreboard soldiers count is populated
+  // if user hits request more, display random response from house rejecting request and stating they will not give soldiers
+  // OR have house accept request and populate scoreboard ** random **
+  // gold
+  // if user hits accept gold, scoreboard gold count is populated
+  // if user hits request more, display random response from house rejecting request and stating they will not give gold
+  // OR have house accept request and populate scoreboard ** random **
+  // goal
+  // if user hits accept, display modal with gendry stating yes i will give you this, or no i wont, random.
+  // if user hits deny, display modal with gendry stating i cannot grant you this -  do not add ANY points to scoreboard
+  // exit modal screen and display empty map
+  // });
+
+  // ***** jquery ending ***** //
+
+  // $martellBtn.on('click', () => {
+  //   gameButtons().changeImage(arg1, arg2, arg3)
   // });
 });
+
+// scraps
+
+// House#2
+// $(otherBtn) => {
+
+//   // Go to the function for other houses
+//     // populate house information from array of objects at stage
+//     $('.house-name').text(`${allHouses[stage].house}`);
+//     $('.house-namee').text(`${allHouses[stage].house}`);
+//     $('.number-of-soldiers').text(`${allHouses[stage].soldiers}`);
+//     $('.amount-of-gold').text(`${allHouses[stage].gold}`);
+//     $('.goal').text(`${allHouses[stage].goal}`);
+
+//     $(Modal).show
+
+//     // calling populate scoreboard function
+//     populateScoreBoard(
+//       stage + 1,
+//       allHouses[stage].soldiers,
+//       allHouses[stage].gold
+//     );
+
+// }
+
+// $(btn).on(click, otherBtn)
+// $(btn1).on(click, otherBtn)
+// $(btn2).on(click, otherBtn)
+// $(btn3).on(click, otherBtn)
+
+//*********************************//
+
+/* event listeners */
+// temporary button to open house info modal
+// $embarkBtn.on('click', () => {
+//   closeInsModal();
+//   manipulateHouseModal();
+// });
+
+// // Hero Class, pulls from array of objectsv ---------- May only need this for end of game battle
+// class Hero {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   trade() {
+//     console.log(`you traded`);
+//   }
+//   moving_speech() {
+//     console.log(`Gendry moving speech`);
+//   }
+//   score() {
+//     console.log(`current score`);
+//   }
+//   currentObjects() {
+//     console.log(`Gendry has..`);
+//   }
+// }
+
+// // Houses Class, pulls from array ---------- May only need this for end of game battle
+// class Houses {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   soldiers() {
+//     console.log(`number of sodiers`);
+//   }
+//   goldAmount() {
+//     console.log(`amount of gold`);
+//   }
+//   houseGoal() {
+//     console.log(`house goal/desire`);
+//   }
+// }
+
+// passing house information to modal **** need this to be triggered by button based on stage *****
+// $embarkBtn.on('click', (event) => {
+//   const manipulateHouseModal = $(event.currentTarget);
+
+//   closeInsModal();
+
+//   $houseInformationModal.css('display', 'flex');
+
+//   // populate house information from array of objects at stage
+//   $('.house-name').text(`${allHouses[stage].house}`);
+//   $('.house-namee').text(`${allHouses[stage].house}`);
+//   $('.number-of-soldiers').text(`${allHouses[stage].soldiers}`);
+//   $('.amount-of-gold').text(`${allHouses[stage].gold}`);
+//   $('.goal').text(`${allHouses[stage].goal}`);
+
+//   // calling populate scoreboard function
+//   populateScoreBoard(
+//     stage + 1,
+//     allHouses[stage].soldiers,
+//     allHouses[stage].gold
+//   );
+// });
+
+//*********************************//
+
+/* event listeners */
+// temporary button to open house info modal
+// $embarkBtn.on('click', () => {
+//   closeInsModal();
+//   manipulateHouseModal();
