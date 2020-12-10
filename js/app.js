@@ -202,6 +202,15 @@ $(() => {
   // battle button
   const $battle = $('#battle');
 
+  // house modal buttons 
+  const $acceptAll = $('.modal-house-acceptAll-btn');
+  const $soldiersAccept = $('.accept-soldier-btn'); 
+  const $requestSoldiers = $('.request-more-soldiers-btn');
+  const $goldAccept = $('.accept-gold-btn');
+  const $requestGold = $('.request-more-gold-btn');
+  const $houseGoalAccept = $('.accept-goal-btn');
+  const $declineGoal = $('.decline-goal-btn');
+
   /* event handlers */
 
   // stage, game works in stages aligned with Array of objects, starting point is 0
@@ -249,12 +258,14 @@ $(() => {
         mapBaratheon.removeClass('map-baratheon').addClass('empty-westeros-bg');
       });
 
-      // stage++;
     }, 2000);
+
+    stage++
   });
 
-  let army;
-  let coins;
+  // soldiers and gold amounts randomizer
+  let army = Math.floor(Math.random() * soldiers + 1);
+  let coins = Math.floor(Math.random() * gold + 1);
 
   // populating the scoreboard
   const populateScoreBoard = (house, soldiers, gold) => {
@@ -266,8 +277,8 @@ $(() => {
       $('.number-of-soldiers').text(soldiers);
       $('.number-of-gold').text(gold);
     } else if (house !== 1) {
-      army = Math.floor(Math.random() * soldiers + 1);
-      coins = Math.floor(Math.random() * gold + 1);
+      army();
+      coins();
       let totalSoldiers;
       let totalGold;
       totalSoldiers += army;
@@ -280,8 +291,93 @@ $(() => {
     }
   };
 
+
+// const populate house modal info not for scoreboard 
+const houseModalInformation = (allSoldiers, allGold) => {
+  $('.')
+}
+
+// house martell button
+
+const martellBtn = () => {
+    // Change Background Image && arrived at house
+    const changeImage =  $('.img-container')
+    .removeClass('.empty-westeros-bg')
+    .addClass('.map-martell');
+    
+    
+    setTimeout(() => {
+      openHouseModal();
+      console.log(`show modal`);
+      $('.house-name').text(allHouses[stage].house);
+      $('.house-namee').text(allHouses[stage].house);
+      $('.number-of-soldiers').text(allHouses[stage].soldiers);
+      $('.amount-of-gold').text(allHouses[stage].gold);
+      $('.number-of-soldiers-given').text(`${army()}`);
+      $('.amount-of-gold-given').text(`${coins()}`);
+      $('.goal').text(allHouses[stage].goal)
+
+
+       // *add button* Accept All, IF user accepts all house soldiers, gold and goal. Add all counts to the scoreboard.
+      if($acceptAll.on('click', (event) => {
+        populateScoreBoard(
+          stage + 1,
+          allHouses[stage].soldiers,
+          allHouses[stage].gold
+        );
+      }));
+
+    }, 2000);
+  };
+  // soldiers
+  // if user hits accept soldiers, scoreboard soldiers count is populated
+  // if user hits request more, display random response from house rejecting request and stating they will not give soldiers
+  // OR have house accept request and populate scoreboard ** random **
+  // gold
+  // if user hits accept gold, scoreboard gold count is populated
+  // if user hits request more, display random response from house rejecting request and stating they will not give gold
+  // OR have house accept request and populate scoreboard ** random **
+  // goal
+  // if user hits accept, display modal with gendry stating yes i will give you this, or no i wont, random.
+  // if user hits deny, display modal with gendry stating i cannot grant you this -  do not add ANY points to scoreboard
+
+      // display modal template with how many soldiers and gold it has AND how many soldiers and gold they can give (plus buttons) AND show the goal of the house with buttons
+
+
+      // $('.baratheon-accept').on('click', () => {
+      //   // console.log(allHouses[stage].soldiers, 'line 240');
+      //   // console.log(allHouses[stage].gold, 'line 241');
+      //   populateScoreBoard(
+      //     stage + 1,
+      //     allHouses[stage].soldiers,
+      //     allHouses[stage].gold
+      //   );
+        // exit modal screen and display empty map
+      //   closeHouseModal();
+
+      //   mapBaratheon.removeClass('map-baratheon').addClass('empty-westeros-bg');
+      // });
+    }, 2000);
+}
+
+
+
+
+
+
+
+
+
+
+
+  // create function for house user selections 
+  // create function for changing image
+  // finish game function(s) by calling the above two
+
+
+
   // plaing game through buttons
-  const gameButtons = () => {
+  const gamePlay = () => {
     stage++;
     // Change Background Image && arrived at house
     const changeImage = (removing, adding) => {
@@ -294,6 +390,9 @@ $(() => {
 
       // create
 
+      // display modal template with how many soldiers and gold it has AND how many soldiers and gold they can give (plus buttons) AND show the goal of the house with buttons
+
+
       // $('.baratheon-accept').on('click', () => {
       //   // console.log(allHouses[stage].soldiers, 'line 240');
       //   // console.log(allHouses[stage].gold, 'line 241');
@@ -302,7 +401,7 @@ $(() => {
       //     allHouses[stage].soldiers,
       //     allHouses[stage].gold
       //   );
-
+        // exit modal screen and display empty map
       //   closeHouseModal();
 
       //   mapBaratheon.removeClass('map-baratheon').addClass('empty-westeros-bg');
@@ -310,27 +409,19 @@ $(() => {
     }, 2000);
   };
 
-  // display modal template with how many soldiers and gold it has AND how many soldiers and gold they can give (plus buttons) AND show the goal of the house with buttons
-  // *add button* Accept All, IF user accepts all house soldiers, gold and goal. Add all counts to the scoreboard.
-  // soldiers
-  // if user hits accept soldiers, scoreboard soldiers count is populated
-  // if user hits request more, display random response from house rejecting request and stating they will not give soldiers
-  // OR have house accept request and populate scoreboard ** random **
-  // gold
-  // if user hits accept gold, scoreboard gold count is populated
-  // if user hits request more, display random response from house rejecting request and stating they will not give gold
-  // OR have house accept request and populate scoreboard ** random **
-  // goal
-  // if user hits accept, display modal with gendry stating yes i will give you this, or no i wont, random.
-  // if user hits deny, display modal with gendry stating i cannot grant you this -  do not add ANY points to scoreboard
-  // exit modal screen and display empty map
+  
+  
+
+
+  
+  // running buttons 
+   // $martellBtn.on('click', () => {
+  //   gameButtons().changeImage(arg1, arg2, arg3)
   // });
 
   // ***** jquery ending ***** //
 
-  // $martellBtn.on('click', () => {
-  //   gameButtons().changeImage(arg1, arg2, arg3)
-  // });
+ 
 });
 
 // scraps
