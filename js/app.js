@@ -49,56 +49,56 @@ const allHouses = [
     house: 'Baratheon',
     soldiers: 500,
     gold: 10000,
-    goal: 'Peace to Kingdom',
+    goal: 'peace to Kingdom',
   },
 
   {
     house: 'Martell',
     soldiers: 250,
     gold: 20000,
-    goal: 'Place in court',
+    goal: 'place in court',
   },
 
   {
     house: 'Tyrell',
     soldiers: 150,
     gold: 5000,
-    goal: 'Strong allegiance',
+    goal: 'strong allegiance',
   },
 
   {
     house: 'Lannister',
     soldiers: 75,
     gold: 5000,
-    goal: 'Place in court',
+    goal: 'place in court',
   },
 
   {
     house: 'Tully',
     soldiers: 400,
     gold: 3000,
-    goal: 'Strong allegiance',
+    goal: 'strong allegiance',
   },
 
   {
     house: 'Arryn',
     soldiers: 5000,
     gold: 10000,
-    goal: 'Place in court',
+    goal: 'place in court',
   },
 
   {
     house: 'GreyJoy',
     soldiers: 300,
     gold: 1000,
-    goal: 'Strong allegiance',
+    goal: 'strong allegiance',
   },
 
   {
     house: 'Stark',
     soldiers: 10000,
     gold: 4000,
-    goal: 'Place in court',
+    goal: 'place in court',
   },
 ];
 
@@ -190,7 +190,7 @@ $(() => {
 
   // game play  buttons
   // changing background buttons and triggering game functions
-  const $baratheonBtn = $('#land-baratheon-Btn');
+
   const $martellBtn = $('#land-martell-Btn');
   const $tyrellBtn = $('#land-tyrell-Btn');
   const $lannisterBtn = $('#land-lannister-Btn');
@@ -239,16 +239,16 @@ $(() => {
       .addClass('map-baratheon');
 
     setTimeout(() => {
-      console.log(`baratheon`);
+      // console.log(`baratheon`);
 
       $('#modal-house-baratheon').css('display', 'flex');
 
-      console.log(`baratheon show modal`);
+      // console.log(`baratheon show modal`);
 
       $('.baratheon-accept').on('click', () => {
-        console.log(allHouses[stage].soldiers, 'line 240');
-        console.log(allHouses[stage].gold, 'line 241');
-        populateScoreBoard(
+        // console.log(allHouses[stage].soldiers, 'line 240');
+        // console.log(allHouses[stage].gold, 'line 241');
+        populateScoreBoard2(
           stage + 1,
           allHouses[stage].soldiers,
           allHouses[stage].gold
@@ -260,47 +260,51 @@ $(() => {
       });
     }, 2000);
 
-    // stage++;
+    $('#baratheon-close-btn').on('click', (event) => {
+      $('#modal-house-baratheon').css('display', 'none');
+    });
   });
 
   // in order to access
   let soldiers;
   let gold;
 
-  // soldiers and gold amounts randomizer
-  const army = () => {
-    let randomArmy = Math.floor(Math.random() * soldiers + 1);
-    return randomArmy;
-  };
-
-  const coins = () => {
-    let randomCoins = Math.floor(Math.random() * gold + 1);
-    return randomCoins;
-  };
-
+  // soldiers and gold holder
+  let totalSoldiers = 0;
+  let totalGold = 0;
   // populating the scoreboard
-  const populateScoreBoard = (house, soldiers, gold) => {
-    // console.log(gold);
-    // console.log(soldiers);
 
-    if (house === 1) {
-      $('.number-of-houses').text(house);
-      $('.number-of-soldiers').text(soldiers);
-      $('.number-of-gold').text(gold);
-    } else if (house !== 1) {
-      army();
-      coins();
-      let totalSoldiers;
-      let totalGold;
-      totalSoldiers += army;
-      totalGold += coins;
-      $('.number-of-houses').text(house);
-      $('.number-of-soldiers').text(totalSoldiers); // may need to change this to copy text from # of soldiers given
-      $('.number-of-gold').text(totalGold);
-    } else {
-      alert(`You have found a bug!`);
-    }
+  const populateScoreBoard2 = (house, soldiers, gold) => {
+    totalSoldiers += soldiers;
+    totalGold += gold;
+    $('.score-number-of-houses').text(house);
+    $('.score-number-of-soldiers').text(totalSoldiers);
+    $('.score-number-of-gold').text(totalGold);
   };
+
+  // const populateScoreBoard = (house, soldiers, gold) => {
+  //   // console.log(gold);
+  //   // console.log(soldiers);
+
+  //   if (house === 1) {
+  //     $('.score-number-of-houses').text(house);
+  //     $('.score-number-of-soldiers').text(soldiers);
+  //     $('.score-number-of-gold').text(gold);
+  //   } else if (house !== 1) {
+  //     army = Math.floor(Math.random() * soldiers + 1);
+  //     coins = Math.floor(Math.random() * gold + 1);
+
+  //     totalSoldiers += army;
+  //     totalGold += coins;
+  //     // console.log(totalSoldiers, `this is line 292`);
+  //     // console.log(totalGold, `this is line 293`);
+  //     $('.score-number-of-houses').text(house);
+  //     $('.score-number-of-soldiers').text(totalSoldiers);
+  //     $('.score-number-of-gold').text(totalGold);
+  //   } else {
+  //     alert(`You have found a bug!`);
+  //   }
+  // };
 
   const randomAns = [
     `My lord, I'm afraid I have no more to give`,
@@ -308,15 +312,16 @@ $(() => {
   ];
 
   const randomCompAnswer = () => {
-    let compResponse = Math.floor(Math.random() * randomAns.length);
+    let compResponse = randomAns[Math.floor(Math.random() * randomAns.length)];
     return compResponse;
   };
 
   // change background picture
   const changeImage = () => {
+    console.log(`accessing image`);
     $('.img-container')
-      .removeClass('.empty-westeros-bg')
-      .addClass('.map-martell');
+      .removeClass('empty-westeros-bg')
+      .addClass('map-martell');
   };
 
   /* soldiers */
@@ -332,23 +337,23 @@ $(() => {
   // if user hits deny, display modal with gendry stating i cannot grant you this -  do not add ANY points to scoreboard
 
   // house martell button
-  const martellBtn = () => {
+  $martellBtn.on('click', (event) => {
     console.log(`martell was triggered`);
     stage++;
-
+    console.log(stage, `current stage, 336`);
     // Change Background Image && arrived at house
     changeImage();
 
     setTimeout(() => {
       openHouseModal();
       console.log(`show modal`);
-
+      console.log(allHouses[stage].soldiers);
       $('.house-name').text(allHouses[stage].house);
       $('.house-namee').text(allHouses[stage].house);
       $('.number-of-soldiers').text(allHouses[stage].soldiers);
       $('.amount-of-gold').text(allHouses[stage].gold);
-      $('.number-of-soldiers-given').text(army());
-      $('.amount-of-gold-given').text(`${coins()}`);
+      $('.number-of-soldiers-given').text(army);
+      $('.amount-of-gold-given').text(coins);
       $('.goal').text(allHouses[stage].goal);
 
       // *add button* Accept All, IF user accepts all house soldiers, gold and goal. Add all counts to the scoreboard.
@@ -413,12 +418,12 @@ $(() => {
           `It is unfortunate we could not work together, perhaps in future. Best of luck.`
         );
       });
-    }, 3000);
-  };
+      closeHouseModal();
+    }, 2000);
 
-  // running buttons
-  $martellBtn.on('click', () => {
-    martellBtn();
+    $('#close3').on('click', (event) => {
+      closeHouseModal();
+    });
   });
 
   // ***** jquery ending ***** //
