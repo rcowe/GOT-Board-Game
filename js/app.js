@@ -1,6 +1,6 @@
 // console.log('$');
 
-// ***** sudo, self steps ***** //
+// * sudo, self steps ***** //
 /* 
 Set-up
 Step 1. In html add background -- done. 
@@ -185,7 +185,6 @@ $(() => {
 
   // house information modal, for game play
   const $houseInformationModal = $('#modal-house-info');
-  const $texbox3 = $('#modal-textbox3'); // This is the textbox in the modal *** maybe unnecessary***
   const $closeHouseInfoModal = $('#close3');
 
   // game play  buttons
@@ -248,7 +247,7 @@ $(() => {
       $('.baratheon-accept').on('click', () => {
         // console.log(allHouses[stage].soldiers, 'line 240');
         // console.log(allHouses[stage].gold, 'line 241');
-        populateScoreBoard2(
+        populateScoreBoard(
           stage + 1,
           allHouses[stage].soldiers,
           allHouses[stage].gold
@@ -265,22 +264,15 @@ $(() => {
     });
   });
 
-  // in order to access
-  let soldiers;
-  let gold;
+  // // in order to access
+  let ranSoldiers;
+  let ranGold;
 
-  // soldiers and gold holder
-  let totalSoldiers = 0;
-  let totalGold = 0;
-  // populating the scoreboard
-
-  const populateScoreBoard2 = (house, soldiers, gold) => {
-    totalSoldiers += soldiers;
-    totalGold += gold;
-    $('.score-number-of-houses').text(house);
-    $('.score-number-of-soldiers').text(totalSoldiers);
-    $('.score-number-of-gold').text(totalGold);
-  };
+  // // soldiers and gold holder
+  // let totalSoldiers = 0;
+  // let totalGold = 0;
+  // let army = 0;
+  // let coins = 0;
 
   // const populateScoreBoard = (house, soldiers, gold) => {
   //   // console.log(gold);
@@ -306,6 +298,31 @@ $(() => {
   //   }
   // };
 
+  // soldiers and gold holder
+  let totalSoldiers = 0;
+  let totalGold = 0;
+  let army = 0;
+  let coins = 0;
+
+  const populateScoreBoard = (house, soldiers, gold) => {
+    // console.log(gold);
+    // console.log(soldiers);
+    totalSoldiers += soldiers;
+    totalGold += gold;
+    $('.score-number-of-houses').text(house);
+    $('.score-number-of-soldiers').text(totalSoldiers);
+    $('.score-number-of-gold').text(totalGold);
+  };
+
+  const randomArmy = (ranSoldiers) => {
+    army = Math.floor(Math.random() * ranSoldiers + 1);
+    return army;
+  };
+  const randomCoins = (ranGold) => {
+    coins = Math.floor(Math.random() * ranGold + 1);
+    return coins;
+  };
+
   const randomAns = [
     `My lord, I'm afraid I have no more to give`,
     `This is a sizeable contribution! Ye would be wise to take it`,
@@ -316,44 +333,35 @@ $(() => {
     return compResponse;
   };
 
+  let westeros = '';
+  let newBg = '';
   // change background picture
-  const changeImage = () => {
-    console.log(`accessing image`);
-    $('.img-container')
-      .removeClass('empty-westeros-bg')
-      .addClass('map-martell');
+  const changeImage = (westeros, newBg) => {
+    // console.log(`accessing image`);
+    $('.img-container').removeClass(westeros).addClass(newBg);
   };
-
-  /* soldiers */
-  // if user hits accept soldiers, scoreboard soldiers count is populated
-  // if user hits request more, display random response from house rejecting request and stating they will not give soldiers
-  // OR have house accept request and populate scoreboard ** random **
-  /* gold */
-  // if user hits accept gold, scoreboard gold count is populated
-  // if user hits request more, display random response from house rejecting request and stating they will not give gold
-  // OR have house accept request and populate scoreboard ** random **
-  /* goal */
-  // if user hits accept, display modal with gendry stating yes i will give you this, or no i wont, random.
-  // if user hits deny, display modal with gendry stating i cannot grant you this -  do not add ANY points to scoreboard
 
   // house martell button
   $martellBtn.on('click', (event) => {
     console.log(`martell was triggered`);
     stage++;
-    console.log(stage, `current stage, 336`);
+    // console.log(stage, `current stage, 336`);
     // Change Background Image && arrived at house
-    changeImage();
+    changeImage('empty-westeros-bg', 'map-martell');
 
     setTimeout(() => {
       openHouseModal();
-      console.log(`show modal`);
-      console.log(allHouses[stage].soldiers);
+      // console.log(`show modal`);
+      // console.log(allHouses[stage].soldiers);
+
       $('.house-name').text(allHouses[stage].house);
       $('.house-namee').text(allHouses[stage].house);
       $('.number-of-soldiers').text(allHouses[stage].soldiers);
       $('.amount-of-gold').text(allHouses[stage].gold);
-      $('.number-of-soldiers-given').text(army);
-      $('.amount-of-gold-given').text(coins);
+      $('.number-of-soldiers-given').text(
+        randomArmy(allHouses[stage].soldiers)
+      );
+      $('.amount-of-gold-given').text(randomCoins(allHouses[stage].gold));
       $('.goal').text(allHouses[stage].goal);
 
       // *add button* Accept All, IF user accepts all house soldiers, gold and goal. Add all counts to the scoreboard.
@@ -366,8 +374,8 @@ $(() => {
       ) {
         populateScoreBoard(
           stage + 1,
-          allHouses[stage].soldiers,
-          allHouses[stage].gold
+          randomArmy(allHouses[stage].soldiers),
+          randomCoins(allHouses[stage].gold)
         );
         closeHouseModal();
       } else {
@@ -430,6 +438,18 @@ $(() => {
 });
 
 // scraps
+
+/* soldiers */
+// if user hits accept soldiers, scoreboard soldiers count is populated
+// if user hits request more, display random response from house rejecting request and stating they will not give soldiers
+// OR have house accept request and populate scoreboard ** random **
+/* gold */
+// if user hits accept gold, scoreboard gold count is populated
+// if user hits request more, display random response from house rejecting request and stating they will not give gold
+// OR have house accept request and populate scoreboard ** random **
+/* goal */
+// if user hits accept, display modal with gendry stating yes i will give you this, or no i wont, random.
+// if user hits deny, display modal with gendry stating i cannot grant you this -  do not add ANY points to scoreboard
 
 // House#2
 // $(otherBtn) => {
