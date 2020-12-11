@@ -289,12 +289,12 @@ $(() => {
 
   // check for winner
   checkForWinner = () => {
-    if ($('.score-number-of-houses').text(house) >= 7) {
+    if ($('.score-number-of-houses').text(house) >= 6) {
       alert(
         `!! Congratulations Gendry, You have raised enough support, soldiers and gold to face off the Queen! Select Battle Queen to get started!`
       );
+      $('.queen-battle-btn').css('display', 'flex');
     }
-    // hide all other buttons
     // create battle modal
     // have them battle each other, inside modal with some images!
     // button for easter eggs! (ned stark coming back, giving counsel, arya coming back and lastly, jon snow breaking it all up!)

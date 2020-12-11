@@ -99,12 +99,20 @@ h1 {
   justify-content: center;
 }
 
+#battle-Btn {
+  color: red;
+  background-color: black;
+}
+.queen-battle-btn {
+  display: none;
+}
+
 button {
   margin-bottom: 1em;
   padding: 1em 3em;
   border-radius: 0.5em;
   border: 2px solid black(247, 239, 239, 0.5);
-  color: rgba(5, 4, 4, 0.5);
+  color: rgba(8, 1, 1, 0.5);
 }
 
 button:focus {
@@ -114,8 +122,9 @@ button:focus {
 
 button:hover {
   cursor: pointer;
-  color: #ffffff;
-  font-size: 1.1em;
+  color: #c41414;
+  font-weight: bold;
+  font-size: 1.2em;
   transition: all ease 0.5s;
 }
 
