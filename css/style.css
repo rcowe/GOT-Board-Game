@@ -22,11 +22,11 @@ body {
 }
 
 h1 {
-  color: rgb(226, 60, 60);
+  color: rgb(218, 7, 7);
   font-size: 2em;
   text-align: center;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #111111;
+  -webkit-text-stroke-color: rgb(218, 7, 7);
 }
 
 /* modals section */
@@ -224,8 +224,16 @@ button:hover {
 }
 
 /* modal calss that never changes */
-.blank-modal {
-  background-color: white;
+.blank-modal-house {
+  background-color: black;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  display: block;
+}
+
+.blank-modal-baratheon {
+  background-color: black;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
