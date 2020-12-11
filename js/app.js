@@ -92,6 +92,9 @@ const allHouses = [
   },
 ];
 
+const readyBattleSoldiers = 2100;
+const readyBattleGold = 6500;
+
 // DOM cache html items
 
 // container for page
@@ -284,6 +287,60 @@ $(() => {
     $('.blank-modal-house').removeClass(blankImage2).addClass(modalBg2);
   };
 
+  // check for winner
+  checkForWinner = () => {
+    if ($('.score-number-of-houses').text(house) >= 7) {
+      alert(
+        `!! Congratulations Gendry, You have raised enough support, soldiers and gold to face off the Queen! Select Battle Queen to get started!`
+      );
+    }
+    // hide all other buttons
+    // create battle modal
+    // have them battle each other, inside modal with some images!
+    // button for easter eggs! (ned stark coming back, giving counsel, arya coming back and lastly, jon snow breaking it all up!)
+  };
+
+  // Hero Class, pulls from array of objectsv ---------- May only need this for end of game battle
+  class Hero {
+    constructor(name) {
+      this.name = name;
+    }
+    moving_speech() {
+      // show div section in modal
+      // give speech
+      //close div section
+      console.log(`Gendry moving speech`);
+    }
+    score() {
+      console.log(`current score`);
+    }
+    easterEggs() {
+      // these are buttons that trigger the above (ned stark coming back, giving counsel, arya coming back and lastly, jon snow breaking it all up!)
+    }
+
+    soldiers() {
+      console.log(`number of sodiers`);
+    }
+    goldAmount() {}
+    pledgedHouses() {}
+  }
+
+  // Houses Class, pulls from array ---------- May only need this for end of game battle
+  class Queen {
+    constructor(name) {
+      this.name = name;
+    }
+    soldiers() {
+      console.log(`number of sodiers`);
+    }
+    goldAmount() {
+      console.log(`amount of gold`);
+    }
+    bringBackCersei() {
+      // image of cersei coming back with a new gold company: ENDS here;
+    }
+  }
+
   // Game Play functions
 
   // stage 0, house baratheon modal
@@ -326,123 +383,250 @@ $(() => {
   // stage 1, house martell button
   $martellBtn.on('click', (event) => {
     console.log(`martell was triggered`);
-    stage++;
+    stage = 1;
     // Change Background Image && arrived at house
     changeImageBackground('empty-westeros-bg', 'map-martell');
 
     setTimeout(() => {
-      openHouseModal();
-      // $('#modal-house-info').css('display', 'flex');
-      console.log(`accessing`);
+      if (stage === 1) {
+        openHouseModal();
+        // $('#modal-house-info').css('display', 'flex');
+        console.log(`accessing`);
 
-      let thisHouseSoldiers = randomArmy(allHouses[stage].soldiers);
-      let thisHouseCoin = randomCoins(allHouses[stage].gold);
+        let thisHouseSoldiers = randomArmy(allHouses[stage].soldiers);
+        let thisHouseCoin = randomCoins(allHouses[stage].gold);
 
-      changeModalBackgroundHouse('empty-modal-background', 'modal-martell');
+        changeModalBackgroundHouse('empty-modal-background', 'modal-martell');
+        console.log(stage, `line 343`);
+        $('.house-name').text(allHouses[stage].house);
+        $('.house-namee').text(allHouses[stage].house);
+        $('.number-of-soldiers').text(allHouses[stage].soldiers);
+        $('.amount-of-gold').text(allHouses[stage].gold);
+        $('.number-of-soldiers-given').text(thisHouseSoldiers);
+        $('.amount-of-gold-given').text(thisHouseCoin);
+        $('.goal').text(allHouses[stage].goal);
+        console.log(stage, `line 352`);
+        // console.log(allHouses[stage].soldiers);
 
-      $('.house-name').text(allHouses[stage].house);
-      $('.house-namee').text(allHouses[stage].house);
-      $('.number-of-soldiers').text(allHouses[stage].soldiers);
-      $('.amount-of-gold').text(allHouses[stage].gold);
-      $('.number-of-soldiers-given').text(thisHouseSoldiers);
-      $('.amount-of-gold-given').text(thisHouseCoin);
-      $('.goal').text(allHouses[stage].goal);
+        $acceptAll.on('click', (event) => {
+          alert(
+            `You have accepted all, after modal closes you can move to next house! Scoreboard will be auto populated.`
+          );
+          console.log(`accessing close modal1`);
+          populateScoreBoard(stage + 1, thisHouseSoldiers, thisHouseCoin);
 
-      // console.log(allHouses[stage].soldiers);
+          closeHouseModal();
+          alert(`Keep playing, go to the next house!`);
+          // switch background to empty map
+          changeImageBackground('map-martell', 'empty-westeros-bg');
 
-      $acceptAll.on('click', (event) => {
-        alert(
-          `You have accepted all, after modal closes you can move to next house! Scoreboard will be auto populated.`
-        );
-        console.log(`accessing close modal`);
-        populateScoreBoard(stage + 1, thisHouseSoldiers, thisHouseCoin);
+          // hide martell button
+          $martellBtn.hide();
 
-        closeHouseModal();
-        alert(`Keep playing, go to the next house!`);
-        // switch background to empty map
-        changeImageBackground('map-martell', 'empty-westeros-bg');
+          // switch the modal background to nothing
+          changeModalBackgroundHouse('modal-martell', 'empty-modal-background');
+        });
 
-        // hide martell button
-        $martellBtn.hide();
+        $makeChoices.on('click', (event) => {
+          alert(
+            `You will now need to select from below choices, Aceept or Request more. However, this house may choose to not give if you request more or decline their goal. Make wise choices!`
+          );
+          $makeChoices.hide();
+        });
 
-        // switch the modal background to nothing
-        changeModalBackgroundHouse('modal-martell', 'empty-modal-background');
-      });
+        $soldiersAccept.on('click', (event) => {
+          alert(
+            `You've made a wise choice, keep playing all soliders will be added!`
+          );
+          $soldiersAccept.hide();
+          $requestSoldiers.hide();
+          populateScoreBoard(stage + 1, thisHouseSoldiers, null);
+        });
+        $requestSoldiers.on('click', (event) => {
+          alert(`Uh-oh! House says: ${randomCompAnswer()}`);
+          $requestSoldiers.hide();
+          $soldiersAccept.hide();
+        });
 
-      $makeChoices.on('click', (event) => {
-        alert(
-          `You will now need to select from below choices, Aceept or Request more. However, this house may choose to not give if you request more or decline their goal. Make wise choices!`
-        );
-        $makeChoices.hide();
-      });
+        $goldAccept.on('click', (event) => {
+          alert(
+            `You've made a wise choice, keep playing all gold will be added!`
+          );
+          $goldAccept.hide();
+          $requestGold.hide();
+          populateScoreBoard(null, null, thisHouseCoin); // only way to not add more houses pledged was to null this..it deletes the stage info
+        });
+        $requestGold.on('click', (event) => {
+          alert(`Uh-oh! House says: ${randomCompAnswer()}`);
+          $requestGold.hide();
+          $goldAccept.hide();
+        });
 
-      $soldiersAccept.on('click', (event) => {
-        alert(
-          `You've made a wise choice, keep playing all soliders will be added!`
-        );
-        $soldiersAccept.hide();
-        $requestSoldiers.hide();
-        populateScoreBoard(stage + 1, thisHouseSoldiers, null);
-      });
-      $requestSoldiers.on('click', (event) => {
-        alert(`Uh-oh! House says: ${randomCompAnswer()}`);
-        $requestSoldiers.hide();
-        $soldiersAccept.hide();
-      });
+        $houseGoalAccept.on('click', (event) => {
+          alert(
+            `This House believes in its true king, Gendry Baratheon of House Baratheon! May you have a long and prosperus reign!`
+          );
+          $houseGoalAccept.hide();
+          $declineGoal.hide();
+          alert(`Select the close button and move to next house!`);
+          // need logic on if gold accept and soldier accept, then do the below.. this is a loophole
+        });
+        $declineGoal.on('click', (event) => {
+          alert(
+            `It is unfortunate we could not work together, perhaps in future. Best of luck.`
+          );
+          closeHouseModal();
+          alert(`Keep playing, go to the next house!`);
+          // switch background to empty map
+          changeImageBackground('map-martell', 'empty-westeros-bg');
 
-      $goldAccept.on('click', (event) => {
-        alert(
-          `You've made a wise choice, keep playing all gold will be added!`
-        );
-        $goldAccept.hide();
-        $requestGold.hide();
-        populateScoreBoard(null, null, thisHouseCoin); // only way to not add more houses pledged was to null this..it deletes the stage info
-      });
-      $requestGold.on('click', (event) => {
-        alert(`Uh-oh! House says: ${randomCompAnswer()}`);
-        $requestGold.hide();
-        $goldAccept.hide();
-      });
+          // hide martell button
+          $martellBtn.hide();
 
-      $houseGoalAccept.on('click', (event) => {
-        alert(
-          `This House believes in its true king, Gendry Baratheon of House Baratheon! May you have a long and prosperus reign!`
-        );
-        $houseGoalAccept.hide();
-        $declineGoal.hide();
-        alert(`Select the close button and move to next house!`);
-        // need logic on if gold accept and soldier accept, then do the below.. this is a loophole
-      });
-      $declineGoal.on('click', (event) => {
-        alert(
-          `It is unfortunate we could not work together, perhaps in future. Best of luck.`
-        );
-        closeHouseModal();
-        alert(`Keep playing, go to the next house!`);
-        // switch background to empty map
-        changeImageBackground('map-martell', 'empty-westeros-bg');
+          // switch the modal background to nothing
+          changeModalBackgroundHouse('modal-martell', 'empty-modal-background');
+        });
 
-        // hide martell button
-        $martellBtn.hide();
+        $('#close3').on('click', (event) => {
+          alert(
+            `Uh-oh! You are now leaving the house and will not receive any points! You must reload game! Or go to next house`
+          );
+          closeHouseModal();
+          // switch background to empty map
+          changeImageBackground('map-martell', 'empty-westeros-bg');
 
-        // switch the modal background to nothing
-        changeModalBackgroundHouse('modal-martell', 'empty-modal-background');
-      });
+          // hide martell button
+          $martellBtn.hide();
 
-      $('#close3').on('click', (event) => {
-        alert(
-          `Uh-oh! You are now leaving the house and will not receive any points! You must reload game! Or go to next house`
-        );
-        closeHouseModal();
-        // switch background to empty map
-        changeImageBackground('map-martell', 'empty-westeros-bg');
+          // switch the modal background to nothing
+          changeModalBackgroundHouse('modal-martell', 'empty-modal-background');
+        });
+      }
+    }, 2000);
+  });
 
-        // hide martell button
-        $martellBtn.hide();
+  // stage 2, house tyrell button **************** bug here it runs the above and then the below
+  $tyrellBtn.on('click', (event) => {
+    console.log(`tyrell was triggered`);
+    stage = 2;
+    // Change Background Image && arrived at house
+    changeImageBackground('empty-westeros-bg', 'map-tyrell');
 
-        // switch the modal background to nothing
-        changeModalBackgroundHouse('modal-martell', 'empty-modal-background');
-      });
+    setTimeout(() => {
+      if (stage === 2) {
+        openHouseModal();
+        // $('#modal-house-info').css('display', 'flex');
+        console.log(`accessing`);
+
+        let thisHouseSoldiers = randomArmy(allHouses[stage].soldiers);
+        let thisHouseCoin = randomCoins(allHouses[stage].gold);
+
+        changeModalBackgroundHouse('empty-modal-background', 'modal-tyrell');
+        console.log(allHouses[stage].house);
+        $('.house-name').text(allHouses[stage].house);
+        $('.house-namee').text(allHouses[stage].house);
+        $('.number-of-soldiers').text(allHouses[stage].soldiers);
+        $('.amount-of-gold').text(allHouses[stage].gold);
+        $('.number-of-soldiers-given').text(thisHouseSoldiers);
+        $('.amount-of-gold-given').text(thisHouseCoin);
+        $('.goal').text(allHouses[stage].goal);
+        console.log(stage);
+        // console.log(allHouses[stage].soldiers);
+
+        $acceptAll.on('click', (event) => {
+          alert(
+            `You have accepted all gold, soldiers and conditions, after modal closes you can move to next house! Scoreboard will be auto populated.`
+          );
+          console.log(`accessing close modal2`);
+          populateScoreBoard(stage + 1, thisHouseSoldiers, thisHouseCoin);
+
+          closeHouseModal();
+          alert(`Keep playing, go to the next house!`);
+          // switch background to empty map
+          changeImageBackground('map-tyrell', 'empty-westeros-bg');
+
+          // hide martell button
+          $tyrellBtn.hide();
+
+          // switch the modal background to nothing
+          changeModalBackgroundHouse('modal-tyrell', 'empty-modal-background');
+        });
+
+        $makeChoices.on('click', (event) => {
+          alert(
+            `You will now need to select from below choices, Aceept or Request more. However, this house may choose to not give if you request more or decline their goal. Make wise choices!`
+          );
+          $makeChoices.hide();
+        });
+
+        $soldiersAccept.on('click', (event) => {
+          alert(
+            `You've made a wise choice, keep playing all soliders will be added!`
+          );
+          $soldiersAccept.hide();
+          $requestSoldiers.hide();
+          populateScoreBoard(stage + 1, thisHouseSoldiers, null);
+        });
+        $requestSoldiers.on('click', (event) => {
+          alert(`Uh-oh! House says: ${randomCompAnswer()}`);
+          $requestSoldiers.hide();
+          $soldiersAccept.hide();
+        });
+
+        $goldAccept.on('click', (event) => {
+          alert(
+            `You've made a wise choice, keep playing all gold will be added!`
+          );
+          $goldAccept.hide();
+          $requestGold.hide();
+          populateScoreBoard(null, null, thisHouseCoin); // only way to not add more houses pledged was to null this..it deletes the stage info
+        });
+        $requestGold.on('click', (event) => {
+          alert(`Uh-oh! House says: ${randomCompAnswer()}`);
+          $requestGold.hide();
+          $goldAccept.hide();
+        });
+
+        $houseGoalAccept.on('click', (event) => {
+          alert(
+            `This House believes in its true king, Gendry Baratheon of House Baratheon! May you have a long and prosperus reign!`
+          );
+          $houseGoalAccept.hide();
+          $declineGoal.hide();
+          alert(`Select the close button and move to next house!`);
+          // need logic on if gold accept and soldier accept, then do the below.. this is a loophole
+        });
+        $declineGoal.on('click', (event) => {
+          alert(
+            `It is unfortunate we could not work together, perhaps in future. Best of luck.`
+          );
+          closeHouseModal();
+          alert(`Keep playing, go to the next house!`);
+          // switch background to empty map
+          changeImageBackground('map-tyrell', 'empty-westeros-bg');
+
+          // hide martell button
+          $tyrellBtn.hide();
+
+          // switch the modal background to nothing
+          changeModalBackgroundHouse('modal-tyrell', 'empty-modal-background');
+        });
+
+        $('#close3').on('click', (event) => {
+          alert(
+            `Uh-oh! You are now leaving the house and will not receive any points! You must reload game! Or go to next house`
+          );
+          closeHouseModal();
+          // switch background to empty map
+          changeImageBackground('map-tyrell', 'empty-westeros-bg');
+
+          // hide martell button
+          $tyrellBtn.hide();
+
+          // switch the modal background to nothing
+          changeModalBackgroundHouse('modal-tyrell', 'empty-modal-background');
+        });
+      }
     }, 2000);
   });
 
@@ -450,38 +634,3 @@ $(() => {
 });
 
 // scraps
-
-// // Hero Class, pulls from array of objectsv ---------- May only need this for end of game battle
-// class Hero {
-//   constructor(name) {
-//     this.name = name;
-//   }
-//   trade() {
-//     console.log(`you traded`);
-//   }
-//   moving_speech() {
-//     console.log(`Gendry moving speech`);
-//   }
-//   score() {
-//     console.log(`current score`);
-//   }
-//   currentObjects() {
-//     console.log(`Gendry has..`);
-//   }
-// }
-
-// // Houses Class, pulls from array ---------- May only need this for end of game battle
-// class Houses {
-//   constructor(name) {
-//     this.name = name;
-//   }
-//   soldiers() {
-//     console.log(`number of sodiers`);
-//   }
-//   goldAmount() {
-//     console.log(`amount of gold`);
-//   }
-//   houseGoal() {
-//     console.log(`house goal/desire`);
-//   }
-// }
