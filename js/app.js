@@ -1,6 +1,6 @@
 // console.log('$');
 
-// * sudo, self steps ***** //
+/* sudo, self steps */
 /* 
 Set-up
 Step 1. In html add background -- done. 
@@ -8,10 +8,10 @@ Step 2. Write storyline into html (Modals, Buttons, etc) -- done
 Step 3. Create modal, that shows up upon loading page (figure out how to add images within modal) -- done, went with button to initialize 
 Step 4. In HTML, write DIVs for each house, add sigil image -- done 
 Step 5. Add css standard items -- done 
-Step 6. Position house sigils in correct locations
-Step 7. Make the sigils click-able OR place sigils and have user image show up when button is clicked to move through each location
-Step 8. Generate text box for user to interact with houses at location
-Step 9. Create user scoreboard image/box 
+Step 6. Position house sigils in correct locations -- done 
+Step 7. Make the sigils click-able OR place sigils and have user image show up when button is clicked to move through each location done, went with 2 
+Step 8. Generate text box for user to interact with houses at location -- created modals 
+Step 9. Create user scoreboard image/box -- done 
 
 Game play
 Step 1. When user arrives at house, generate text box/modal?, within this:
@@ -19,29 +19,19 @@ Step 1. When user arrives at house, generate text box/modal?, within this:
   - computer will randomly select how much gold the house will give [present number]
   - computer will show the houses's goal, [show goal]
 Step 2: User interactions
+  - accept all, modal closes and scoreboard gets populated 
+  - make choices, below buttons show up
   - User can see buttons
-    - Accept Soldiers 
-    - Request More Soldiers
-    - Accept Gold 
-    - Request More Gold
-    - Accept Goal 
-    - Decline Goal
-      - If goal is accepted, then add gold,  soliders and house support to score board
-      - if goal is denied, warn user that they may not get enough support to defeat queen. Do not add score.
-Step 3: Alert that user must now go to next house
+    - Accept Soldiers, if user hits accept soldiers, scoreboard soldiers count is populated
+    - Request More Soldiers, if user hits request more, display random response from house rejecting request and stating they will not give soldiers
+    - Accept Gold, if user hits accept gold, scoreboard gold count is populated
+    - Request More Gold, if user hits request more, display random response from house rejecting request and stating they will not give gold
+    - Accept Goal, If goal is accepted, then add gold,  soliders and house support to score board
+    - Decline Goal, if goal is denied, warn user that they may not get enough support to defeat queen. Do not add score.
+Step 3: Alert that user must now go to next house // close modal
 */
 
-// ***** audio file function ***** // --------------Disabled for now
-function playMusic() {
-  const music = document.getElementById('audio');
-  music.play();
-  setTimeout(function () {
-    music.currentTime = 0;
-    music.pause();
-  }, 15000);
-}
-
-// ***** global scope ***** //
+/** Game Data  **/
 
 // array of objects to hold information for the houses
 const allHouses = [
@@ -102,47 +92,85 @@ const allHouses = [
   },
 ];
 
-// ***** jquery ***** //
+// DOM cache html items
+
+// container for page
+const $container = $('.container');
+
+// story modal
+const $storyModal = $('#modal-story'); // This is the story modal
+const $texbox1 = $('#modal-textbox1'); // This is the textbox in the modal *** maybe unnecessary***
+const $openStoryModal = $('#openModal-GameInit'); // This is the button that opens the intro story modal
+const $closeStoryModalTag = $('#close1'); // this is the anchor tag that closes the modal
+
+// game instructions button
+const $openInsModalBtn = $('#instructions'); // This is the button that opens the instruction modal
+
+// instructions modal
+const $InstructionsModal = $('#modal-instructions'); // This is the story modal
+const $texbox2 = $('#modal-textbox2'); // This is the textbox in the modal
+const $closeInsModalTag = $('#close2'); // this is the anchor tag that closes the modal
+
+// game instructions button
+const $buttonGameIns = $('#game-instructions-btn');
+
+// start the game button
+const $embarkBtn = $('#game-play-Btn'); // This is the button to start the game function at stage / location 0
+
+// house information modal, for game play
+const $houseInformationModal = $('#modal-house-info');
+const $closeHouseInfoModal = $('#close3');
+
+// game play  buttons
+// changing background buttons and triggering game functions
+
+const $martellBtn = $('#land-martell-Btn');
+const $tyrellBtn = $('#land-tyrell-Btn');
+const $lannisterBtn = $('#land-lannister-Btn');
+const $tully = $('#land-tully-Btn');
+const $arryn = $('#land-arryn-Btn');
+const $greyjoy = $('#land-greyjoy-Btn');
+const $stark = $('#land-targaryan-Btn');
+
+// battle button
+const $battle = $('#battle');
+
+// house modal buttons
+const $acceptAll = $('.modal-house-acceptAll-btn');
+const $makeChoices = $('.house-select-options');
+const $soldiersAccept = $('.accept-soldier-btn');
+const $requestSoldiers = $('.request-more-soldiers-btn');
+const $goldAccept = $('.accept-gold-btn');
+const $requestGold = $('.request-more-gold-btn');
+const $houseGoalAccept = $('.accept-goal-btn');
+const $declineGoal = $('.decline-goal-btn');
+
+//*** global functions // initialization ***//
+
+// stage, game works in stages aligned with Array of objects, starting point is 0
+let stage = 0;
+
+// audio file function
+function playMusic() {
+  const music = document.getElementById('audio');
+  music.play();
+  setTimeout(function () {
+    music.currentTime = 0;
+    music.pause();
+  }, 15000);
+}
+
+// ***** jquery start ***** //
 
 $(() => {
-  //************** New Section
-
-  // ***** game set-up ***** //
-
-  /* DOM cache */
-
-  // container for page
-  const $container = $('.container');
-
-  // story modal
-  const $storyModal = $('#modal-story'); // This is the story modal
-  const $texbox1 = $('#modal-textbox1'); // This is the textbox in the modal *** maybe unnecessary***
-  const $openStoryModal = $('#openModal-GameInit'); // This is the button that opens the intro story modal
-  const $closeStoryModalTag = $('#close1'); // this is the anchor tag that closes the modal
-
-  // game instructions button
-  const $openInsModalBtn = $('#instructions'); // This is the button that opens the instruction modal
-
-  // instructions modal
-  const $InstructionsModal = $('#modal-instructions'); // This is the story modal
-  const $texbox2 = $('#modal-textbox2'); // This is the textbox in the modal
-  const $closeInsModalTag = $('#close2'); // this is the anchor tag that closes the modal
-
-  // game instructions button
-  const $buttonGameIns = $('#game-instructions-btn');
-
   /* event handlers */
-
-  // story modal adding inside container
-  $storyModal.appendTo($container);
-
-  // instructions modal adding inside container
-  $InstructionsModal.appendTo($container);
 
   // show story modal on screen
   const openStoryModal = (event) => {
     $storyModal.css('display', 'flex');
   };
+
+  // hide story modal from screen
   const closingStoryModal = (event) => {
     $storyModal.css('display', 'none');
   };
@@ -151,8 +179,19 @@ $(() => {
   const openInsModal = (event) => {
     $InstructionsModal.css('display', 'flex');
   };
+
+  // hide instructions modal from screen
   const closeInsModal = (event) => {
     $InstructionsModal.css('display', 'none');
+  };
+
+  // show house information modal on screen
+  const openHouseModal = (event) => {
+    $houseInformationModal.css('display', 'flex');
+  };
+  // hide house modal from screen
+  const closeHouseModal = (event) => {
+    $closeHouseInfoModal.css('display', 'none');
   };
 
   /* event listeners */
@@ -174,136 +213,15 @@ $(() => {
   });
   $closeInsModalTag.on('click', closeInsModal);
 
-  //************** New Section
+  // Game Play functions
 
-  // ***** game play ***** //
-
-  /* DOM cache */
-
-  // start the game button
-  const $embarkBtn = $('#game-play-Btn'); // This is the button to start the game function at stage / location 0
-
-  // house information modal, for game play
-  const $houseInformationModal = $('#modal-house-info');
-  const $closeHouseInfoModal = $('#close3');
-
-  // game play  buttons
-  // changing background buttons and triggering game functions
-
-  const $martellBtn = $('#land-martell-Btn');
-  const $tyrellBtn = $('#land-tyrell-Btn');
-  const $lannisterBtn = $('#land-lannister-Btn');
-  const $tully = $('#land-tully-Btn');
-  const $arryn = $('#land-arryn-Btn');
-  const $greyjoy = $('#land-greyjoy-Btn');
-  const $stark = $('#land-targaryan-Btn');
-
-  // battle button
-  const $battle = $('#battle');
-
-  // house modal buttons
-  const $acceptAll = $('.modal-house-acceptAll-btn');
-  const $makeChoices = $('.house-select-options');
-  const $soldiersAccept = $('.accept-soldier-btn');
-  const $requestSoldiers = $('.request-more-soldiers-btn');
-  const $goldAccept = $('.accept-gold-btn');
-  const $requestGold = $('.request-more-gold-btn');
-  const $houseGoalAccept = $('.accept-goal-btn');
-  const $declineGoal = $('.decline-goal-btn');
-
-  /* event handlers */
-
-  // stage, game works in stages aligned with Array of objects, starting point is 0
-  let stage = 0;
-
-  // show house information modal on screen
-  const openHouseModal = (event) => {
-    $houseInformationModal.css('display', 'flex');
-  };
-
-  const closeHouseModal = (event) => {
-    /// may not need this
-    $closeHouseInfoModal.css('display', 'none');
-  };
-
-  /*  manipulating the DOM */
-
-  // stage 0, house baratheon modal
-  $embarkBtn.on('click', (event) => {
-    closeInsModal();
-
-    // Change Background Image
-    const mapBaratheon = $('.img-container')
-      .removeClass('empty-westeros-bg')
-      .addClass('map-baratheon');
-
-    setTimeout(() => {
-      // console.log(`baratheon`);
-
-      $('#modal-house-baratheon').css('display', 'flex');
-
-      // console.log(`baratheon show modal`);
-
-      $('.baratheon-accept').on('click', () => {
-        // console.log(allHouses[stage].soldiers, 'line 240');
-        // console.log(allHouses[stage].gold, 'line 241');
-        populateScoreBoard(
-          stage + 1,
-          allHouses[stage].soldiers,
-          allHouses[stage].gold
-        );
-
-        $('#modal-house-baratheon').css('display', 'none');
-
-        mapBaratheon.removeClass('map-baratheon').addClass('empty-westeros-bg');
-      });
-    }, 2000);
-
-    $('#baratheon-close-btn').on('click', (event) => {
-      $('#modal-house-baratheon').css('display', 'none');
-    });
-  });
-
-  // // in order to access
-  let ranSoldiers;
-  let ranGold;
-
-  // // soldiers and gold holder
-  // let totalSoldiers = 0;
-  // let totalGold = 0;
-  // let army = 0;
-  // let coins = 0;
-
-  // const populateScoreBoard = (house, soldiers, gold) => {
-  //   // console.log(gold);
-  //   // console.log(soldiers);
-
-  //   if (house === 1) {
-  //     $('.score-number-of-houses').text(house);
-  //     $('.score-number-of-soldiers').text(soldiers);
-  //     $('.score-number-of-gold').text(gold);
-  //   } else if (house !== 1) {
-  //     army = Math.floor(Math.random() * soldiers + 1);
-  //     coins = Math.floor(Math.random() * gold + 1);
-
-  //     totalSoldiers += army;
-  //     totalGold += coins;
-  //     // console.log(totalSoldiers, `this is line 292`);
-  //     // console.log(totalGold, `this is line 293`);
-  //     $('.score-number-of-houses').text(house);
-  //     $('.score-number-of-soldiers').text(totalSoldiers);
-  //     $('.score-number-of-gold').text(totalGold);
-  //   } else {
-  //     alert(`You have found a bug!`);
-  //   }
-  // };
-
-  // soldiers and gold holder
+  // soldiers and gold initialization
   let totalSoldiers = 0;
   let totalGold = 0;
   let army = 0;
   let coins = 0;
 
+  // function to populate scoreboard
   const populateScoreBoard = (house, soldiers, gold) => {
     // console.log(gold);
     // console.log(soldiers);
@@ -314,32 +232,82 @@ $(() => {
     $('.score-number-of-gold').text(totalGold);
   };
 
+  // random soldiers and gold initialization
+  let ranSoldiers;
+  let ranGold;
+
+  // function to generate random soldiers number
   const randomArmy = (ranSoldiers) => {
     army = Math.floor(Math.random() * ranSoldiers + 1);
     return army;
   };
+  // function to generate random gold amount
   const randomCoins = (ranGold) => {
     coins = Math.floor(Math.random() * ranGold + 1);
     return coins;
   };
 
+  // array for random responses from computer
   const randomAns = [
     `My lord, I'm afraid I have no more to give`,
     `This is a sizeable contribution! Ye would be wise to take it`,
   ];
 
+  // function for generating random computer answer
   const randomCompAnswer = () => {
     let compResponse = randomAns[Math.floor(Math.random() * randomAns.length)];
     return compResponse;
   };
 
+  // initializing for background changes
   let westeros = '';
   let newBg = '';
+
   // change background picture
-  const changeImage = (westeros, newBg) => {
+  const changeImageBackground = (westeros, newBg) => {
     // console.log(`accessing image`);
     $('.img-container').removeClass(westeros).addClass(newBg);
   };
+
+  // change modal background picture
+
+  const changeModalBackground = (blankImage, modalBg) => {
+    // add here
+    $('.blank-modal').removeClass(blankImage).addClass(modalBg);
+  };
+
+  // Game Play functions
+
+  // stage 0, house baratheon modal
+  $embarkBtn.on('click', (event) => {
+    closeInsModal();
+
+    // Change Background Image
+    changeImageBackground('empty-westeros-bg', 'map-baratheon');
+
+    setTimeout(() => {
+      $('#modal-house-baratheon').css('display', 'flex');
+      changeModalBackground('empty-modal-background', 'modal-baratheon');
+
+      $('.baratheon-accept').on('click', () => {
+        populateScoreBoard(
+          stage + 1,
+          allHouses[stage].soldiers,
+          allHouses[stage].gold
+        );
+
+        $('#modal-house-baratheon').css('display', 'none');
+
+        changeImageBackground('map-baratheon', 'empty-westeros-bg');
+      });
+    }, 2000);
+
+    $('#baratheon-close-btn').on('click', (event) => {
+      $('#modal-house-baratheon').css('display', 'none');
+    });
+  });
+
+  // // in order to access
 
   // house martell button
   $martellBtn.on('click', (event) => {
@@ -347,7 +315,7 @@ $(() => {
     stage++;
     // console.log(stage, `current stage, 336`);
     // Change Background Image && arrived at house
-    changeImage('empty-westeros-bg', 'map-martell');
+    changeImageBackground('empty-westeros-bg', 'map-martell');
 
     setTimeout(() => {
       openHouseModal();
@@ -439,17 +407,35 @@ $(() => {
 
 // scraps
 
-/* soldiers */
-// if user hits accept soldiers, scoreboard soldiers count is populated
-// if user hits request more, display random response from house rejecting request and stating they will not give soldiers
-// OR have house accept request and populate scoreboard ** random **
-/* gold */
-// if user hits accept gold, scoreboard gold count is populated
-// if user hits request more, display random response from house rejecting request and stating they will not give gold
-// OR have house accept request and populate scoreboard ** random **
-/* goal */
-// if user hits accept, display modal with gendry stating yes i will give you this, or no i wont, random.
-// if user hits deny, display modal with gendry stating i cannot grant you this -  do not add ANY points to scoreboard
+// // soldiers and gold holder
+// let totalSoldiers = 0;
+// let totalGold = 0;
+// let army = 0;
+// let coins = 0;
+
+// const populateScoreBoard = (house, soldiers, gold) => {
+//   // console.log(gold);
+//   // console.log(soldiers);
+
+//   if (house === 1) {
+//     $('.score-number-of-houses').text(house);
+//     $('.score-number-of-soldiers').text(soldiers);
+//     $('.score-number-of-gold').text(gold);
+//   } else if (house !== 1) {
+//     army = Math.floor(Math.random() * soldiers + 1);
+//     coins = Math.floor(Math.random() * gold + 1);
+
+//     totalSoldiers += army;
+//     totalGold += coins;
+//     // console.log(totalSoldiers, `this is line 292`);
+//     // console.log(totalGold, `this is line 293`);
+//     $('.score-number-of-houses').text(house);
+//     $('.score-number-of-soldiers').text(totalSoldiers);
+//     $('.score-number-of-gold').text(totalGold);
+//   } else {
+//     alert(`You have found a bug!`);
+//   }
+// };
 
 // House#2
 // $(otherBtn) => {

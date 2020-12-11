@@ -22,7 +22,7 @@ body {
 }
 
 h1 {
-  color: white;
+  color: rgb(226, 60, 60);
   font-size: 2em;
   text-align: center;
   -webkit-text-stroke-width: 1px;
@@ -47,11 +47,9 @@ h1 {
   z-index: 1;
 }
 
-/* Important part to get the modal scroll working */
+/* Important part to get the modal scroll working  */
 #modal-textbox1,
-#modal-textbox2,
-#modal-textbox3,
-#modal-textbox-baratheon {
+#modal-textbox2 {
   background-color: white;
   min-height: 20%;
   width: 40%;
@@ -61,8 +59,24 @@ h1 {
   padding: 2%;
   line-height: 120%;
   text-align: center;
-  font-size: small;
-  overflow-y: initial;
+  font-size: medium;
+  overflow-y: initial; /* Important part to get the modal scroll working  */
+}
+
+#modal-textbox3,
+#modal-textbox-baratheon {
+  /* background-color: white; */
+  min-height: 20%;
+  width: 40%;
+  border-radius: 2px;
+  margin: 10% auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
+  padding: 1%;
+  line-height: 120%;
+  text-align: center;
+  font-size: medium;
+  color: white;
+  overflow-y: initial; /* Important part to get the modal scroll working  */
 }
 
 /* for modal scroll function */
@@ -135,42 +149,69 @@ button:hover {
   background: url('../images/Westeros.png');
 }
 
-/* new backgrounds for buttons */
+/* new backgrounds for screen and modals */
 
 .map-baratheon {
   background: url('../images/map_houses/map_baratheon.png');
+}
+.modal-baratheon {
+  background: url('../images/house_sigils/sigil_baratheon.png');
 }
 
 .map-martell {
   background: url('../images/map_houses/map_martell.png');
 }
+.modal-martell {
+  background: url('../images/house_sigils/sigil_martell.png');
+}
 
 .map-tyrell {
   background: url('../images/map_houses/map_tyrell.png');
+}
+.modal-tyrell {
+  background: url('../images/house_sigils/sigil_tyrell.png');
 }
 
 .map-lannister {
   background: url('../images//map_houses/map_lannister.png');
 }
+.modal-lannister {
+  background: url('../images/house_sigils/sigil_lannister.png');
+}
 
 .map-tully {
   background: url('../images//map_houses/map_tully.png');
+}
+.modal-tully {
+  background: url('../images/house_sigils/sigil_tully.png');
 }
 
 .map-arryn {
   background: url('../images//map_houses/map_arryn.png');
 }
+.modal-arryn {
+  background: url('../images/house_sigils/sigil_arryn.png');
+}
 
 .map-greyjoy {
   background: url('../images//map_houses/map_greyjoy.png');
+}
+.modal-greyjoy {
+  background: url('../images/house_sigils/sigil_greyjoy.png');
 }
 
 .map-stark {
   background: url('../images//map_houses/map_stark.png');
 }
+.modal-stark {
+  background: url('../images/house_sigils/sigil_stark.png');
+}
 
 .map-targaryen {
   background: url('../images//map_houses/map_targaryen.png');
+}
+.modal-targaryen {
+  background: url('../images/house_sigils/sigil_targaryen.png');
 }
 
 /* westeros image container */
@@ -180,6 +221,15 @@ button:hover {
   display: block;
   width: 100%;
   height: 1034px;
+}
+
+/* modal calss that never changes */
+.blank-modal {
+  background-color: white;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  display: block;
 }
 
 @media (max-width: 730px) {
