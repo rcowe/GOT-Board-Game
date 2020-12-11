@@ -288,6 +288,9 @@ $(() => {
   };
 
   // hidebutton
+  const hideButton = (buttonToHide) => {
+    $(buttonToHide).hide();
+  };
 
   // check for winner
   checkForWinner = () => {
@@ -421,7 +424,7 @@ $(() => {
         changeImageBackground(mapBg, emptyBg);
 
         // hide martell button
-        event.target.id.hide(); // doesn't work
+        hidebutton(buttonToHide); // doesn't work
 
         // switch the modal background to nothing
         changeModalBackgroundHouse(sigilModalBg, emptyModalBg);
@@ -480,8 +483,8 @@ $(() => {
         // switch background to empty map
         changeImageBackground(mapBg, emptyBg);
 
-        // hide martell button
-        $martellBtn.hide();
+        // hide house  button
+        hideButton(buttonToHide);
 
         // switch the modal background to nothing
         changeModalBackgroundHouse(sigilModalBg, emptyModalBg);
@@ -496,7 +499,7 @@ $(() => {
         changeImageBackground(mapBg, emptyBg);
 
         // hide martell button
-        $martellBtn.hide();
+        hidebutton(buttonToHide);
 
         // switch the modal background to nothing
         changeModalBackgroundHouse(sigilModalBg, emptyModalBg);
@@ -520,6 +523,8 @@ $(() => {
           'modal-martell'
         );
         // deleteBtn('land-martell-Btn'); line 290, to create hide and show buttons
+        hideButton(event.target.id);
+
         break;
       case 'land-tyrell-Btn':
         stage = 2;
