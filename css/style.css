@@ -119,17 +119,6 @@ button:hover {
   transition: all ease 0.5s;
 }
 
-/* Scoreboard */
-.score-board {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  border: 5px solid #111111;
-  max-width: 55%;
-  margin: 0% auto 2% auto;
-  padding: 2%;
-}
-
 .char-img {
   display: flex;
   justify-content: center;
@@ -240,25 +229,26 @@ button:hover {
   display: block;
 }
 
+/* Scoreboard */
+.score-board {
+  position: fixed;
+  left: 2%;
+  bottom: 60%;
+  border: 5px solid #111111;
+  max-width: 55%;
+  margin: 0% auto 2% auto;
+  padding: 2%;
+  font-size: 1.5em;
+}
+
 @media (max-width: 730px) {
   h3 {
-    font-size: 2em;
+    font-size: 4em;
   }
-  /* #modal-textbox {
-    width: 60%;
-    margin: 20% auto;
-    padding: 5%;
-  } */
   .score-board {
+    font-size: 4em;
     max-width: 80%;
-    font-size: 0.75em;
     border: 3px solid #111111;
     background: rgba(255, 255, 255, 0.9);
   }
-  /* #infoStatus {
-    width: 90%;
-  }
-  #questionBox {
-    font-size: 1.5em;
-  } */
 }

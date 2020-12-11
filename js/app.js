@@ -355,8 +355,18 @@ $(() => {
           `You have accepted all, after modal closes you can move to next house! Scoreboard will be auto populated.`
         );
         console.log(`accessing close modal`);
-        closeHouseModal();
         populateScoreBoard(stage + 1, thisHouseSoldiers, thisHouseCoin);
+
+        closeHouseModal();
+        alert(`Keep playing, go to the next house!`);
+        // switch background to empty map
+        changeImageBackground('map-martell', 'empty-westeros-bg');
+
+        // hide martell button
+        $martellBtn.hide();
+
+        // switch the modal background to nothing
+        changeModalBackgroundHouse('modal-martell', 'empty-modal-background');
       });
 
       $makeChoices.on('click', (event) => {
@@ -399,18 +409,9 @@ $(() => {
           `This House believes in its true king, Gendry Baratheon of House Baratheon! May you have a long and prosperus reign!`
         );
         $houseGoalAccept.hide();
+        $declineGoal.hide();
+        alert(`Select the close button and move to next house!`);
         // need logic on if gold accept and soldier accept, then do the below.. this is a loophole
-
-        closeHouseModal();
-        alert(`Keep playing, go to the next house!`);
-        // switch background to empty map
-        changeImageBackground('map-martell', 'empty-westeros-bg');
-
-        // hide martell button
-        $martellBtn.hide();
-
-        // switch the modal background to nothing
-        changeModalBackgroundHouse('modal-martell', 'empty-modal-background');
       });
       $declineGoal.on('click', (event) => {
         alert(
@@ -450,72 +451,6 @@ $(() => {
 
 // scraps
 
-// // soldiers and gold holder
-// let totalSoldiers = 0;
-// let totalGold = 0;
-// let army = 0;
-// let coins = 0;
-
-// const populateScoreBoard = (house, soldiers, gold) => {
-//   // console.log(gold);
-//   // console.log(soldiers);
-
-//   if (house === 1) {
-//     $('.score-number-of-houses').text(house);
-//     $('.score-number-of-soldiers').text(soldiers);
-//     $('.score-number-of-gold').text(gold);
-//   } else if (house !== 1) {
-//     army = Math.floor(Math.random() * soldiers + 1);
-//     coins = Math.floor(Math.random() * gold + 1);
-
-//     totalSoldiers += army;
-//     totalGold += coins;
-//     // console.log(totalSoldiers, `this is line 292`);
-//     // console.log(totalGold, `this is line 293`);
-//     $('.score-number-of-houses').text(house);
-//     $('.score-number-of-soldiers').text(totalSoldiers);
-//     $('.score-number-of-gold').text(totalGold);
-//   } else {
-//     alert(`You have found a bug!`);
-//   }
-// };
-
-// House#2
-// $(otherBtn) => {
-
-//   // Go to the function for other houses
-//     // populate house information from array of objects at stage
-//     $('.house-name').text(`${allHouses[stage].house}`);
-//     $('.house-namee').text(`${allHouses[stage].house}`);
-//     $('.number-of-soldiers').text(`${allHouses[stage].soldiers}`);
-//     $('.amount-of-gold').text(`${allHouses[stage].gold}`);
-//     $('.goal').text(`${allHouses[stage].goal}`);
-
-//     $(Modal).show
-
-//     // calling populate scoreboard function
-//     populateScoreBoard(
-//       stage + 1,
-//       allHouses[stage].soldiers,
-//       allHouses[stage].gold
-//     );
-
-// }
-
-// $(btn).on(click, otherBtn)
-// $(btn1).on(click, otherBtn)
-// $(btn2).on(click, otherBtn)
-// $(btn3).on(click, otherBtn)
-
-//*********************************//
-
-/* event listeners */
-// temporary button to open house info modal
-// $embarkBtn.on('click', () => {
-//   closeInsModal();
-//   manipulateHouseModal();
-// });
-
 // // Hero Class, pulls from array of objectsv ---------- May only need this for end of game battle
 // class Hero {
 //   constructor(name) {
@@ -550,34 +485,3 @@ $(() => {
 //     console.log(`house goal/desire`);
 //   }
 // }
-
-// passing house information to modal **** need this to be triggered by button based on stage *****
-// $embarkBtn.on('click', (event) => {
-//   const manipulateHouseModal = $(event.currentTarget);
-
-//   closeInsModal();
-
-//   $houseInformationModal.css('display', 'flex');
-
-//   // populate house information from array of objects at stage
-//   $('.house-name').text(`${allHouses[stage].house}`);
-//   $('.house-namee').text(`${allHouses[stage].house}`);
-//   $('.number-of-soldiers').text(`${allHouses[stage].soldiers}`);
-//   $('.amount-of-gold').text(`${allHouses[stage].gold}`);
-//   $('.goal').text(`${allHouses[stage].goal}`);
-
-//   // calling populate scoreboard function
-//   populateScoreBoard(
-//     stage + 1,
-//     allHouses[stage].soldiers,
-//     allHouses[stage].gold
-//   );
-// });
-
-//*********************************//
-
-/* event listeners */
-// temporary button to open house info modal
-// $embarkBtn.on('click', () => {
-//   closeInsModal();
-//   manipulateHouseModal();
