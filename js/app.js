@@ -490,7 +490,14 @@ $(() => {
     }
   });
 
-  $battleBtn.on('click', (event) => {});
+  // function for battle between
+  // const changeBattleBackground = (imgblank1) => {
+
+  // $battleBtn.on('click', (event) => {
+  //   $('.modal-battle-faceoff').css('display', 'flex');
+
+  //   const change('empty-modal-background', 'modal-targaryen');
+  // });
 
   // switch case function
 

@@ -34,7 +34,8 @@ h1 {
 #modal-story,
 #modal-instructions,
 #modal-house-baratheon,
-#modal-house-info {
+#modal-house-info,
+.modal-battle-faceoff {
   position: fixed;
   top: 0;
   left: 0;
@@ -64,7 +65,8 @@ h1 {
 }
 
 #modal-textbox3,
-#modal-textbox-baratheon {
+#modal-textbox-baratheon,
+.modal-battle-textbox {
   /* background-color: white; */
   min-height: 20%;
   width: 40%;
