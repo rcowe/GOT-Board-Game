@@ -496,7 +496,7 @@ $(() => {
   // $battleBtn.on('click', (event) => {
   //   $('.modal-battle-faceoff').css('display', 'flex');
 
-  //   const change('empty-modal-background', 'modal-targaryen');
+  //   // const change('empty-modal-background', 'modal-targaryen');
   // });
 
   // switch case function
