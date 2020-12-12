@@ -287,50 +287,6 @@ $(() => {
     $('.blank-modal-house').removeClass(blankImage2).addClass(modalBg2);
   };
 
-  // hidebutton
-
-  // const hidebutton = () => {
-  //   if (event.target.id === '#land-martell-Btn') {
-  //     $martellBtn.hide();
-  //   } else if (target.id === '#land-tyrell-Btn') {
-  //     $tyrellBtn.hide();
-  //   } else if (target.id === '#land-lannister-Btn') {
-  //     $lannisterBtn.hide();
-  //   } else {
-  //     console.log('did not work, hide button');
-  //   }
-  // };
-
-  // const hidebutton = (event) => {
-  //   switch (event.target.id) {
-  //     case '#land-martell-Btn':
-  //       $martellBtn.hide();
-  //       break;
-  //     case '#land-tyrell-Btn':
-  //       $tyrellBtn.hide();
-  //       break;
-  //     case '#land-lannister-Btn':
-  //       $lannisterBtn.hide();
-  //       break;
-  //     case 'land-tully-Btn':
-  //       $tullyBtn.hide();
-  //       break;
-  //     case 'land-arryn-Btn':
-  //       $arrynBtn.hide();
-  //       break;
-  //     case 'land-greyjoy-Btn':
-  //       $greyjoyBtn.hide();
-  //       break;
-  //     case 'land-stark-Btn':
-  //       $starkBtn.hide();
-  //       break;
-  //     default:
-  //       alert(`nothing to hide!`);
-  //   }
-  // };
-
-  // hide martell button
-
   // check for winner
   checkForWinner = () => {
     if ($('.score-number-of-houses').text(house) >= 6) {
@@ -431,16 +387,20 @@ $(() => {
     changeImageBackground(emptyBg, mapBg);
 
     setTimeout(() => {
+      // opening house modal
       openHouseModal();
-      // $('#modal-house-info').css('display', 'flex');
-      console.log(`accessing modal`);
+      stage++;
+      // changing house modal background
+      changeModalBackgroundHouse(emptyModalBg, sigilModalBg);
 
+      // storing math.random values to populate modal
       let thisHouseSoldiers = randomArmy(allHouses[stage].soldiers);
       let thisHouseCoin = randomCoins(allHouses[stage].gold);
 
-      changeModalBackgroundHouse(emptyModalBg, sigilModalBg);
+      // checking current stage
+      console.log(allHouses[stage]);
 
-      console.log(stage, `line 343`);
+      // populating house modal information
       $('.house-name').text(allHouses[stage].house);
       $('.house-namee').text(allHouses[stage].house);
       $('.number-of-soldiers').text(allHouses[stage].soldiers);
@@ -448,19 +408,17 @@ $(() => {
       $('.number-of-soldiers-given').text(thisHouseSoldiers);
       $('.amount-of-gold-given').text(thisHouseCoin);
       $('.goal').text(allHouses[stage].goal);
-      console.log(stage, `line 352`);
-      // console.log(allHouses[stage].soldiers);
 
-      $acceptAll.on('click', (event) => {
-        if (event.target.id == 'modal-house-acceptAll-btn') {
-          console.log(event.target.id);
+      const acceptAllBtn = () => {
+        $acceptAll.on('click', (event) => {
+          event.preventDefault();
+          console.log(`accessing accept all button, 416`);
+
           alert(
-            `You have accepted all gold, soldiers and conditions, after modal closes you can move to next house! Scoreboard will be auto populated. Keep playing, go to the next house!`
+            `You have accepted all gold, soldiers and conditions, after modal closes you can move to next house! Scoreboard will be auto populated. Keep playing, go to the next house! 
+          Hit the close button!`
           );
-          console.log(`accessing close modal1`);
-
-          alert(`Hit the close button!`);
-
+          console.log(stage);
           // populate scoreboard
           populateScoreBoard(stage + 1, thisHouseSoldiers, thisHouseCoin);
 
@@ -469,34 +427,40 @@ $(() => {
 
           // switch the modal background to nothing
           changeModalBackgroundHouse(sigilModalBg, emptyModalBg);
+        });
+      };
 
-          $acceptAll.hide();
-          $makeChoices.hide();
-        } else {
-          console.log('accept does not run');
-        }
-      });
+      acceptAllBtn();
 
       $makeChoices.on('click', (event) => {
+        event.preventDefault();
         alert(
           `You will now need to select from below choices, Aceept or Request more. However, this house may choose to not give if you request more or decline their goal. Make wise choices!`
         );
         $makeChoices.hide();
       });
 
-      $soldiersAccept.on('click', (event) => {
-        alert(
-          `You've made a wise choice, keep playing all soliders will be added!`
-        );
-        $soldiersAccept.hide();
-        $requestSoldiers.hide();
-        populateScoreBoard(stage + 1, thisHouseSoldiers, null);
-      });
-      $requestSoldiers.on('click', (event) => {
-        alert(`Uh-oh! House says: ${randomCompAnswer()}`);
-        $requestSoldiers.hide();
-        $soldiersAccept.hide();
-      });
+      if (
+        $(document).ready(function () {
+          $soldiersAccept.on('click', (event) => {
+            event.preventDefault();
+            alert(
+              `You've made a wise choice, keep playing all soliders will be added!`
+            );
+            $soldiersAccept.hide();
+            $requestSoldiers.hide();
+            populateScoreBoard(stage + 1, thisHouseSoldiers, null);
+          });
+        })
+      ) {
+      } else {
+        $requestSoldiers.on('click', (event) => {
+          event.preventDefault();
+          alert(`Uh-oh! House says: ${randomCompAnswer()}`);
+          $requestSoldiers.hide();
+          $soldiersAccept.hide();
+        });
+      }
 
       $goldAccept.on('click', (event) => {
         alert(
@@ -551,12 +515,34 @@ $(() => {
 
   // switch case function
 
+  // const switchCaseFunc = (event) => {
+  //   console.log(event.target.id);
+
+  //   if (event.target.id === 'land-martell-Btn') {
+  //     btnCallback(
+  //       'empty-westeros-bg',
+  //       'map-martell',
+  //       'empty-modal-background',
+  //       'modal-martell'
+  //     );
+  //   } else if (event.target.id === 'land-tyrell-Btn') {
+  //     btnCallback(
+  //       'empty-westeros-bg',
+  //       'map-tyrell',
+  //       'empty-modal-background',
+  //       'modal-tyrell'
+  //     );
+  //   } else {
+  //     console.log(`this does not work`);
+  //   }
+  // };
+
   const switchCaseFunc = (event) => {
     console.log(event.target.id);
 
     switch (event.target.id) {
       case 'land-martell-Btn':
-        stage = 1;
+        // stage++;
         btnCallback(
           'empty-westeros-bg',
           'map-martell',
@@ -565,7 +551,7 @@ $(() => {
         );
         break;
       case 'land-tyrell-Btn':
-        stage = 2;
+        // stage++;
         btnCallback(
           'empty-westeros-bg',
           'map-tyrell',
