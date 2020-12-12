@@ -4,69 +4,67 @@
 # App Title: GOT-Board-Game
 Game of Thrones Themed Board Game. I do not own rights to images or media utilized.
 
-### App Demo: www.linkegoeshere.com
+### App Demo: https://rcowe.github.io/GOT-Board-Game/
 
 ---
 
 ## Concept:
 
-A full description of what your project is all about 
+Single player click game. Ten years have passed since the Burning of King's Landing. Queen Cersei is presumed dead. Queen Daenerys lived, she and King Ageon Targaryan (formerly Jon Snow) of Crown House Targaryan, now rule the 6 kingdoms. Winterfell is independent of the crown, and is ruled by the Queen in the North, Sansa Stark of House Stark. Almost all houses have been re-established, all except house Frey. The Twins are home to an Inn for wary travelers. Since that fateful day, Queen Daenerys's actions have been questionable. She is cruel, unjust and paranoid. Someome must stop her. I, Gendry Baratheon (formerly, Rivers) of House Baratheon will rise against her. 
+I am embarking on a journey to obtain support for my cause, will you help me? <
+
+TLDR: Better GOT ending..
+
 
 ## Technologies Used:
 
 * HTML
 * CSS
 * JavaScript 
-* External JavaScript Library
+* jQuery
 
 ##### Credits:
 
-    Unsplash.com
-    unDraw.co
-    Slideshow Repo
+    https://www.hbo.com/game-of-thrones
+
 
 ## Approach:
 
 #### Overview
-Description of how you approach the game development. Here you will add all the development phases, from wireframes to code sample. 
+Game development approach: 
+TBC
 
 #### Wireframe
 
-<img src="https://res.cloudinary.com/duprwuo4j/image/upload/v1601671860/DesignOne_uevwek.png" width="80%" >
+TBC
 
-Color Pallet:
-
-```
-    #5d5174
-    #9680a4
-    #e2deea
-    #545454
-    #e4e0dd
-    #ffffff
-```
 
 #### User stories
 
-As an user I expect to see a button bla bla bla bla
+TBC
 
 #### Development Plan 
-
-description of your development plan 
+TBC
 
 * Development Plan  ONE
 * Development Plan  Two
 * Development Plan  Three 
 * Development Plan  Four
 
-#### MVP
+#### Minimum Viable Product
+
+TBC
 
 * MVP ONE
 * MVP Two
 * MVP Three 
 * MVP Four
 
+
+
 #### Stretch goals
 
+TBC 
 * Stretch goals ONE
 * Stretch goals Two
 * Stretch goals Three 
@@ -74,9 +72,9 @@ description of your development plan
 
 ## Challenges:
 
-Small description of a challange you faced. 
+So many. 
 
 
 
 
-### App Demo: www.linkegoeshere.com
+### App Demo: https://rcowe.github.io/GOT-Board-Game/
