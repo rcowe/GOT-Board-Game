@@ -26,6 +26,10 @@ TLDR: Better GOT ending..
 ##### Credits:
 
     https://www.hbo.com/game-of-thrones
+    Madeline as Cersei Lannister
+    Nando as Jon Snow
+    Arthur as Ned Stark
+    Bruno as Arya Stark
 
 
 ## Approach:
