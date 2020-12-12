@@ -18,13 +18,13 @@
     <div class="buttons">
       <button id="openModal-GameInit" onclick="playMusic()">Game Story</button>
       <!-- <button id="openModal-GameInit">Game Story</button> -->
-      <button id="land-martell-Btn">House Martell</button>
-      <button id="land-tyrell-Btn">House Tyrell</button>
-      <button id="land-lannister-Btn">House Lannister</button>
-      <button id="land-tully-Btn">House Tully</button>
-      <button id="land-arryn-Btn">House Arryn</button>
-      <button id="land-greyjoy-Btn">House GreyJoy</button>
-      <button id="land-stark-Btn">House Stark</button>
+      <button id="land-martell-Btn" class="martell">House Martell</button>
+      <button id="land-tyrell-Btn" class="tyrell">House Tyrell</button>
+      <button id="land-lannister-Btn" class="lannister">House Lannister</button>
+      <button id="land-tully-Btn" class=" tully ">House Tully</button>
+      <button id="land-arryn-Btn" class="arryn">House Arryn</button>
+      <button id="land-greyjoy-Btn" class="greyjoy">House GreyJoy</button>
+      <button id="land-stark-Btn" class="stark">House Stark</button>
     </div>
 
       <div class="queen-battle-btn">
@@ -178,6 +178,34 @@
           <p>This House has 10,000 gold coins.</p><br>
           <button class="baratheon-accept">Accept All</button>
           </div>
+      </div>
+
+      <!-- Modal for battle -->
+      <div class="modal-battle-faceoff">
+        <div class="modal-battle-textbox">
+          <div class="modal-battle-header">
+            <a id="battle-close-btn" href="#">Close</a>
+            <h1 class="battle-header">Time to Fight for the Throne!</h1>
+          </div>
+
+          <div class="battle-section-1">
+            <div class="battle-images"></div>
+          </div>
+
+          <div class="battle-section-2">
+            <div class="battle-buttons">
+              <button class="reason-with-queen"></button>
+              <button class="deploy-army"></button>
+              <button class="attack"></button>
+            </div>
+          </div>
+
+          <div class="battle-easter-eggs">
+            <button class="egg-1"></button>
+            <button class="egg-2"></button>
+            <button class="egg-3"></button>
+          </div>
+        </div>
       </div>
 
     </div>  <!-- closing div for modals -->

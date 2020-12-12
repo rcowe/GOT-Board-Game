@@ -288,9 +288,48 @@ $(() => {
   };
 
   // hidebutton
-  const hideButton = (buttonToHide) => {
-    $(buttonToHide).hide();
-  };
+
+  // const hidebutton = () => {
+  //   if (event.target.id === '#land-martell-Btn') {
+  //     $martellBtn.hide();
+  //   } else if (target.id === '#land-tyrell-Btn') {
+  //     $tyrellBtn.hide();
+  //   } else if (target.id === '#land-lannister-Btn') {
+  //     $lannisterBtn.hide();
+  //   } else {
+  //     console.log('did not work, hide button');
+  //   }
+  // };
+
+  // const hidebutton = (event) => {
+  //   switch (event.target.id) {
+  //     case '#land-martell-Btn':
+  //       $martellBtn.hide();
+  //       break;
+  //     case '#land-tyrell-Btn':
+  //       $tyrellBtn.hide();
+  //       break;
+  //     case '#land-lannister-Btn':
+  //       $lannisterBtn.hide();
+  //       break;
+  //     case 'land-tully-Btn':
+  //       $tullyBtn.hide();
+  //       break;
+  //     case 'land-arryn-Btn':
+  //       $arrynBtn.hide();
+  //       break;
+  //     case 'land-greyjoy-Btn':
+  //       $greyjoyBtn.hide();
+  //       break;
+  //     case 'land-stark-Btn':
+  //       $starkBtn.hide();
+  //       break;
+  //     default:
+  //       alert(`nothing to hide!`);
+  //   }
+  // };
+
+  // hide martell button
 
   // check for winner
   checkForWinner = () => {
@@ -413,21 +452,29 @@ $(() => {
       // console.log(allHouses[stage].soldiers);
 
       $acceptAll.on('click', (event) => {
-        alert(
-          `You have accepted all gold, soldiers and conditions, after modal closes you can move to next house! Scoreboard will be auto populated. Keep playing, go to the next house!`
-        );
-        console.log(`accessing close modal1`);
+        if (event.target.id == 'modal-house-acceptAll-btn') {
+          console.log(event.target.id);
+          alert(
+            `You have accepted all gold, soldiers and conditions, after modal closes you can move to next house! Scoreboard will be auto populated. Keep playing, go to the next house!`
+          );
+          console.log(`accessing close modal1`);
 
-        populateScoreBoard(stage + 1, thisHouseSoldiers, thisHouseCoin);
+          alert(`Hit the close button!`);
 
-        // switch background to empty map
-        changeImageBackground(mapBg, emptyBg);
+          // populate scoreboard
+          populateScoreBoard(stage + 1, thisHouseSoldiers, thisHouseCoin);
 
-        // hide martell button
-        hidebutton(buttonToHide); // doesn't work
+          // switch background to empty map
+          changeImageBackground(mapBg, emptyBg);
 
-        // switch the modal background to nothing
-        changeModalBackgroundHouse(sigilModalBg, emptyModalBg);
+          // switch the modal background to nothing
+          changeModalBackgroundHouse(sigilModalBg, emptyModalBg);
+
+          $acceptAll.hide();
+          $makeChoices.hide();
+        } else {
+          console.log('accept does not run');
+        }
       });
 
       $makeChoices.on('click', (event) => {
@@ -483,23 +530,17 @@ $(() => {
         // switch background to empty map
         changeImageBackground(mapBg, emptyBg);
 
-        // hide house  button
-        hideButton(buttonToHide);
-
         // switch the modal background to nothing
         changeModalBackgroundHouse(sigilModalBg, emptyModalBg);
       });
 
       $('#close3').on('click', (event) => {
         alert(
-          `Uh-oh! You are now leaving the house and will not receive any points! You must reload game! Or go to next house`
+          `Uh-oh! You are now leaving the house, did you collect soldiers, gold and allegiances? Go to next house`
         );
         closeHouseModal();
         // switch background to empty map
         changeImageBackground(mapBg, emptyBg);
-
-        // hide martell button
-        hidebutton(buttonToHide);
 
         // switch the modal background to nothing
         changeModalBackgroundHouse(sigilModalBg, emptyModalBg);
@@ -522,9 +563,6 @@ $(() => {
           'empty-modal-background',
           'modal-martell'
         );
-        // deleteBtn('land-martell-Btn'); line 290, to create hide and show buttons
-        hideButton(event.target.id);
-
         break;
       case 'land-tyrell-Btn':
         stage = 2;
@@ -591,21 +629,27 @@ $(() => {
   });
   $tyrellBtn.on('click', () => {
     switchCaseFunc(event);
+    $martellBtn.hide();
   });
   $lannisterBtn.on('click', () => {
     switchCaseFunc(event);
+    $tyrellBtn.hide();
   });
   $tullyBtn.on('click', () => {
     switchCaseFunc(event);
+    $lannisterBtn.hide();
   });
   $arrynBtn.on('click', () => {
     switchCaseFunc(event);
+    $tullyBtn.hide();
   });
   $greyjoyBtn.on('click', () => {
     switchCaseFunc(event);
+    $arrynBtn.hide();
   });
   $starkBtn.on('click', () => {
     switchCaseFunc(event);
+    $greyjoyBtn.hide();
   });
 
   // ***** jquery ending ***** //
