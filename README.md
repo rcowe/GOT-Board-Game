@@ -11,7 +11,7 @@ Game of Thrones Themed Board Game. I do not own rights to images or media utiliz
 Single player click game. Ten years have passed since the Burning of King's Landing. Queen Cersei is presumed dead. Queen Daenerys lived, she and King Ageon Targaryan (formerly Jon Snow) of Crown House Targaryan, now rule the 6 kingdoms. Winterfell is independent of the crown, and is ruled by the Queen in the North, Sansa Stark of House Stark. Almost all houses have been re-established, all except house Frey. The Twins are home to an Inn for wary travelers. Since that fateful day, Queen Daenerys's actions have been questionable. She is cruel, unjust and paranoid. Someome must stop her. I, Gendry Baratheon (formerly, Rivers) of House Baratheon will rise against her. 
 I am embarking on a journey to obtain support for my cause, will you help me?
 
-TLDR: GOT with a better...
+TLDR: GOT with a better ending...
 
 
 ## Technologies Used:
