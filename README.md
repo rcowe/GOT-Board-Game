@@ -68,7 +68,7 @@ Step 1. When user arrives at house, generate text box/modal?, within this:
 
 #### User stories
 
-![alt text](/Users/rosa/all-code/projects/GOT-board-Game/GOT-UserStory.png)
+![GOT user story](/Users/rosa/all-code/projects/GOT-board-Game/GOT-UserStory.png)
 
 #### Minimum Viable Product
 
